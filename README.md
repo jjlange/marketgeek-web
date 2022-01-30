@@ -1,6 +1,5 @@
-# Getting Started with Create React App
+# MarketGeek - Web
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 ## Requirements
 
 Here come all the requirements that are needed to run this project.

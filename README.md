@@ -2,7 +2,8 @@
 
 ## Requirements
 
-Here come all the requirements that are needed to run this project.
+- NPM (+ packages such as TailwindCSS, HeadlessUI, ..)
+- Node.js (recommend latest version)
 
 ## Available Scripts
 

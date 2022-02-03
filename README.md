@@ -1,4 +1,4 @@
-# MarketGeek - Web
+# MarketGeek - Web Application
 
 ## Requirements
 

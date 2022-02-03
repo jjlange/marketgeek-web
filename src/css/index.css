@@ -1,0 +1,21 @@
+@tailwind base;
+/**
+ * MarketGeek Web App
+ * Copyright (C) 2022, MarketGeek.
+ *
+ * This is the web application for MarketGeek.
+ * It is a user interface to make the interaction between the user and the system.
+ * 
+ * @version 1.0
+ * @description Main CSS file to load Tailwind utilities
+ */
+
+@tailwind components;
+@tailwind utilities;
+
+/**
+ * Import fonts from Google Fonts 
+ * These are later defined in the TailwindCSS configuration 
+ **/
+
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');

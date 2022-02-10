@@ -45,7 +45,7 @@ const Modal = props => {
             <div className={"inline-block align-bottom bg-white dark:bg-gray-800 rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-2xl sm:w-full sm:p-6"}>
               <div>
                 {props.icon && 
-                    <div className={"mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-purple-100"}>
+                    <div className={"mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-sky-100"}>
                         {props.icon}
                     </div>
                 }
@@ -68,7 +68,7 @@ const Modal = props => {
                     name="email"
                     type="email"
                     autoComplete="email"
-                    className="appearance-none block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 sm:text-sm"
+                    className="appearance-none block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm placeholder-gray-400 focus:outline-none focus:ring-sky-500 focus:border-sky-500 dark:bg-gray-700 sm:text-sm"
                     value={props.email}
                     onChange={props.onChangeEmail}
                   />
@@ -85,7 +85,7 @@ const Modal = props => {
                     name="password"
                     type="password"
                     autoComplete="password"
-                    className="appearance-none block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 sm:text-sm"
+                    className="appearance-none block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm placeholder-gray-400 focus:outline-none focus:ring-sky-500 focus:border-sky-500 dark:bg-gray-700 sm:text-sm"
                     value={props.password}
                     onChange={props.onChangePassword}
                   />
@@ -97,15 +97,14 @@ const Modal = props => {
               <div className="mt-5 sm:mt-6 flex flex-row-reverse space-x-4 space-x-reverse">
                 <button
                   type="button"
-                  className={"w-full inline-flex justify-center rounded-lg border border-transparent shadow-sm px-4 py-3 text-white bg-indigo-800/80 hover:bg-indigo-800/70 focus:ring-indigo-500 text-lg font-medium focus:outline-none focus:ring-2 focus:ring-offset-2"}
-                  onClick={props.onClose}
+                  className={"w-full inline-flex justify-center rounded-lg border border-transparent shadow-sm px-4 py-3 text-white bg-sky-800/80 hover:bg-sky-800/70 focus:ring-sky-500 text-lg font-medium focus:outline-none focus:ring-2 focus:ring-offset-2"}
+                  onClick={props.onSubmit}
                 >
-                  Continue
                   {props.primaryButton}
                 </button>
                 <button
                   type="button"
-                  className="w-full mt-3 inline-flex justify-center items-center rounded-lg border border-gray-300 dark:border-transparent px-4 py-2 bg-white dark:bg-transparent text-lg font-medium text-gray-700 dark:text-white hover:bg-gray-50 dark:hover:bg-transparent focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:col-start-1"
+                  className="w-full mt-3 inline-flex justify-center items-center rounded-lg border border-gray-300 dark:border-transparent px-4 py-2 bg-white dark:bg-transparent text-lg font-medium text-gray-700 dark:text-white hover:bg-gray-50 dark:hover:bg-transparent focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500 sm:mt-0 sm:col-start-1"
                   onClick={props.onClose}
                 >
                   Cancel

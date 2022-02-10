@@ -19,6 +19,4 @@ const Button = props => {
     )
 }
 
-Button()
-
 export default Button

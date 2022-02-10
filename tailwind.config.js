@@ -17,8 +17,8 @@ module.exports = {
   ],
   theme: {
     fontFamily: {
-      'san': ['Varela Round', 'sans-serif'],
-       'nunito': ['Inter var', ...defaultTheme.fontFamily.sans],
+      'sans': ['Ubuntu', 'sans-serif'],
+      'nunito': ['Inter var', ...defaultTheme.fontFamily.sans],
     },
     extend: {},
   },

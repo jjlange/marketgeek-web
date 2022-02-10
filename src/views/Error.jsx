@@ -1,4 +1,13 @@
-
+/**
+ * MarketGeek Web App
+ * Copyright (C) 2022, MarketGeek.
+ *
+ * This is the web application for MarketGeek.
+ * It is a user interface to make the interaction between the user and the system.
+ * 
+ * @version 1.0
+ * @description Error page
+ */
 
 function Error() {
   return (

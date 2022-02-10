@@ -17,9 +17,11 @@ module.exports = {
 
   // Load PurgeCSS plugin
   plugins: [
+    require('tailwindcss'),
+    require('autoprefixer'),
     purgecss({
-      // Remove unused CSS classes from the files defined below
-      content: ['./**/*.jsx']
-    })
-  ],
+      content: ['./src/Views/*.jsx', './src/Views/Components/*.jsx'],
+      
+    }),
+  ]
 }

@@ -7,7 +7,7 @@
  * 
  * @version 1.0
  * @description Hook async function to find a user.
- */
+ **/
 
 import { useEffect } from 'react';
 import axios from 'axios';

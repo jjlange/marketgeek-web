@@ -7,7 +7,7 @@
  * 
  * @version 1.0
  * @description App / Router handler
- */  
+ **/  
 
  // React imports
  import React, {useEffect, useState} from "react";

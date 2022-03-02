@@ -7,7 +7,7 @@
  * 
  * @version 1.0
  * @description Button component
- */
+ **/
 
 const Button = props => {
     // Get colour

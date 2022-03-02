@@ -7,7 +7,7 @@
  * 
  * @version 1.0
  * @description Error page
- */
+ **/
 
 function Error() {
   return (
@@ -19,7 +19,7 @@ function Error() {
         <br /><br />
         <a href="/" class="text-xl p-2 font-semibold text- rounded-md px-6 py-2.5 bg-cyan-200  shadow-cyan-200 hover:bg-cyan-200/90 hover:shadow-cyan-200/90 transition ease-in-out duration-400">Reload Page</a>
 
-        <div class="text-gray-100 p-4 mt-16">
+        <div class="text-gray-100 p-4 mt-6">
           <p>Copyright © 2022 - <a href="/" class="text-gray-100">MarketGeek</a>. All rights reserved.</p>
         </div>
       </div>

@@ -7,7 +7,7 @@
  * 
  * @version 1.0
  * @description Modal component
- */
+ **/
 
 // Imports
 import { Fragment } from 'react'

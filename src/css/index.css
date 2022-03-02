@@ -8,14 +8,14 @@
  * 
  * @version 1.0
  * @description Main CSS file to load Tailwind utilities
- */
+ **/
 
 @tailwind components;
 @tailwind utilities;
 
 /**
  * Import fonts from Google Fonts 
- * These are later defined in the TailwindCSS configuration 
+ * These are later defined in the TailwindCSS configuration file
  **/
 
 @import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');

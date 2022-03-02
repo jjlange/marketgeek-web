@@ -1,15 +1,3 @@
-/**
- * MarketGeek Web App
- * Copyright (C) 2022, MarketGeek.
- *
- * This is the web application for MarketGeek.
- * It is a user interface to make the interaction between the user and the system.
- * 
- * @version 1.0
- * @description Main CSS file to load Tailwind utilities
- */
-
-/* Import Tailwind CSS */
 /*! tailwindcss v3.0.16 | MIT License | https://tailwindcss.com
  */
 /*
@@ -28,6 +16,7 @@
 ::after {
   --tw-content: '';
 }
+
 /*
 1. Use a consistent sensible line-height in all browsers.
 2. Prevent adjustments of font size after orientation changes in iOS.

@@ -27,6 +27,7 @@ import LoginModalView from "./Modals/LoginModalView";
 import SignUpModalView from "./Modals/SignUpModalView";
 import SelectBox from "./Components/SelectBox";
 
+
 // Index page 
 function Index() {
     

@@ -12,6 +12,7 @@
 // Imports
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 // Import icons from Heroicons
 import { CashIcon, BellIcon, ViewGridIcon, NewspaperIcon, StarIcon, PlusIcon } from '@heroicons/react/outline'
@@ -24,6 +25,7 @@ import Widget from "./Components/Widget";
 
 // Import test json files
 import tradingStocks from "../Tests/tradingStocks.json";
+import SearchBox from "./Components/SearchBox";
 
 // Home page 
 function Home() {
@@ -61,35 +63,37 @@ function Home() {
         <div className="">
           <div className="relative text-gray-800 dark:text-gray-100 w-full mx-auto">
             <div className="mx-auto overflow-hidden pb-3">
-              <div className="pt-6 max-w-lg md:max-w-2xl lg:max-w-6xl mx-auto">
+              <div className="pt-6 max-w-lg px-4 md:px-0 md:max-w-2xl lg:max-w-6xl mx-auto">
                 <div className="flex">
-                <h2 className="w-full flex text-3xl font-bold items-center">
-                  <CashIcon className="w-10 h-10 mr-2.5" />
-                  MarketGeek 
-                </h2>
+                  
+                  <div className="w-full flex text-3xl font-bold items-center">
+                    <CashIcon className="w-10 h-10 mr-2.5" />
+                    MarketGeek   
+                    <SearchBox placeholder="Search for topic" /> 
+                  </div>
 
-                <div className="flex flex-shrink-0 justify-end">
-                  { user.role === 1 && 
-                    <div className="mr-6">
-                      <button type="button" className="hidden md:inline-flex items-center px-4 md:px-4 py-[0.4em] border text-base border-transparent font-medium rounded-lg text-white bg-gray-700/80 hover:bg-gray-700/70 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 transition ease-in">
-                        Internal Area
+                  <div className="flex flex-shrink-0 justify-end">
+                    { user.role === 1 && 
+                      <div className="mr-6">
+                        <button type="button" className="hidden md:inline-flex items-center px-4 md:px-4 py-[0.4em] border text-base border-transparent font-medium rounded-lg text-white bg-gray-700/80 hover:bg-gray-700/70 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 transition ease-in">
+                          Internal Area
+                        </button>
+                      </div>
+                    }
+                    <button type="button" className="hidden md:inline-flex items-center px-4 md:px-4 py-[0.4em] border text-base border-transparent font-medium rounded-lg text-white bg-red-600/80 hover:bg-red-500/70 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition ease-in" onClick={signOut}>
+                        Sign Out
                       </button>
-                    </div>
-                  }
-                  <button type="button" className="hidden md:inline-flex items-center px-4 md:px-4 py-[0.4em] border text-base border-transparent font-medium rounded-lg text-white bg-red-600/80 hover:bg-red-500/70 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition ease-in" onClick={signOut}>
-                      Sign Out
-                    </button>
+                      <Link to="/search"> 
+                     <button type="button" className="mx-2 inline-flex md:hidden items-center px-4 md:px-6 py-[0.4em] border text-base border-transparent font-medium rounded-lg text-white bg-sky-800/80 hover:bg-sky-800/70 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500 transition ease-in">
+                        Search
+                      </button>
+                      </Link>
+                  </div>
                 </div>
-                </div>
-              </div>
-            </div>
-
-          {/* Main Content */}
-          <div className="mx-auto max-w-md md:max-w-2xl lg:max-w-6xl">
-            <div className="grid grid-cols-1 lg:grid-cols-4 lg:gap-x-6">
+                            <div className="grid grid-cols-1 lg:grid-cols-4 lg:gap-x-6">
               <div className="relative border border-gray-100 dark:border-gray-800 rounded-lg bg-white/90 dark:bg-gray-800/50 mt-12 md:shadow-xl lg:h-[38em]">
                 <div className="w-full pt-8 pb-8 pl-2 pr-2">
-                  <img src="https://pbs.twimg.com/profile_images/1462656761798746115/W7zQhFKq_400x400.jpg" className="w-32 h-32 mx-auto rounded-full border border-gray-600" alt="Profile" />
+                  <img src="" className="w-32 h-32 mx-auto rounded-full border border-gray-600" alt="Profile" />
                   <h2 className="text-3xl font-medium text-gray-800 dark:text-gray-200 text-center mt-4">{user.name}</h2>
                   <div className="flex flex-row md:flex-col xl:flex-row md:space-y-4 xl:space-y-0 text-gray-800 dark:text-gray-200 mt-4 mx-auto w-full">
                     <div className="flex-1 text-center">
@@ -224,6 +228,12 @@ function Home() {
                 </div>
               </div>
             </div>
+              </div>
+            </div>
+
+          {/* Main Content */}
+          <div className="mx-auto max-w-md md:max-w-2xl lg:max-w-6xl">
+
 
             <div className="w-full mt-12">
                 <button type="button" className="mx-auto flex items-center px-8 py-3 border text-xl border-transparent font-medium rounded-lg text-white bg-sky-800/80 hover:bg-sky-800/70 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500 transition ease-in">

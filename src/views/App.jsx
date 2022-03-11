@@ -20,10 +20,12 @@
  // Views
  import Index from "./Index"
  import Home from "./Home"
+ import Search from "./Search"
  
  // Utility imports
  import { ProtectedRoute } from "../Hooks/protectedRoute"
- 
+
+
  function App() {
  
    return (
@@ -31,7 +33,7 @@
          <Router>
              <Fragment>
                <Routes>
-                 <Route exact path='/' element={<Index/>}/>
+                <Route exact path='/' element={<Index/>}/>
                  <Route
                    path="/home"
                    element={
@@ -39,7 +41,8 @@
                        <Home />
                      </ProtectedRoute>
                  }
-               />          
+               /> 
+               <Route exact path ='/search' element={<Search/>}/>         
                <Route exact path='/*' element={<Index/>}/>
              </Routes>
            </Fragment>
@@ -50,3 +53,4 @@
  
  export default App;
  
+  

@@ -1,0 +1,24 @@
+[
+    {
+      "id": 1,
+      "name": "Test Inc.",
+      "symbol": "AAPL",
+      "price": "200.00",
+      "currency": "$USD"
+    },
+    {
+      "id": 2,
+      "name": "Microsoft Corp.",
+      "symbol": "MSFT",
+      "price": "154.00",
+      "currency": "$USD"
+    },
+    {
+      "id": 3,
+      "name": "Microsoft Corp.",
+      "symbol": "MSFT",
+      "price": "154.00",
+      "change": "5.00",
+      "currency": "$USD"
+    }
+]

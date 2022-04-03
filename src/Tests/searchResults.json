@@ -1,0 +1,492 @@
+[
+    {
+      "title": "borneo lumbung, bumi serpong, medco: indonesian equity preview",
+      "author": "berni moestafa",
+      "datetime": "2012-06-04 02:04:37",
+      "url": "http://www.bloomberg.com/news/2012-06-04/borneo-lumbung-bumi-serpong-medco-indonesian-equity-preview.html",
+      "body": "shares of the following companies may have  unusual  moves in  indonesian trading . stock symbols are in parentheses, and share prices are as of the previous close.  the  jakarta composite index  fell 0.9 percent to 3,799.77.  energy companies: crude oil for july delivery declined 3.8 percent to $83.23 a barrel in new york on june 1, the lowest settlement price since oct. 7. the contract was last at $82.30 in after-hours trading.  pt medco energi internasional (medc)  , indonesias biggest listed oil company, slipped 0.6 percent to 1,800 rupiah and  pt energi mega persada (enrg)  , the second largest, sank 5.5 percent to 138 rupiah.  pt bank internasional indonesia (bnii)  : the companys financing unit, pt bii finance center, plans to sell 625 billion rupiah ($66 million) of bonds today and has appointed pt nisp sekuritas to help arrange the sale, the unit said in a prospectus published in  bisnis indonesia . bank internasional indonesia, a unit of malayan banking bhd., malaysias biggest bank, lost 2.2 percent to 445 rupiah.  pt borneo lumbung energi",
+      "sentiment_id": 2,
+      "topics": [
+          "rupiah",
+          "pt",
+          "percentrupiah",
+          "ij",
+          "indonesia",
+          "jakarta",
+          "rupiahpt",
+          "bumi",
+          "indonesian"
+      ],
+      "data": [
+          [
+              "CL=F",
+              {
+                  "Pos_Cooccurences": 17,
+                  "Pos_Avg_Days": "15 days 21:10:35.294117647",
+                  "Pos_Avg_Change": 3.6586957725165314,
+                  "Neg_Cooccurences": 13,
+                  "Neg_Avg_Days": "20 days 18:27:41.538461538",
+                  "Neg_Avg_Change": -5.075556122599948
+              }
+          ],
+          [
+              "GBPUSD=X",
+              {
+                  "Pos_Cooccurences": 14,
+                  "Pos_Avg_Days": "18 days 18:51:25.714285714",
+                  "Pos_Avg_Change": 0.9948218876592784,
+                  "Neg_Cooccurences": 6,
+                  "Neg_Avg_Days": "14 days 00:00:00",
+                  "Neg_Avg_Change": -1.3848426984478202
+              }
+          ],
+          [
+              "GC=F",
+              {
+                  "Pos_Cooccurences": 14,
+                  "Pos_Avg_Days": "23 days 13:42:51.428571428",
+                  "Pos_Avg_Change": 3.548556441788168,
+                  "Neg_Cooccurences": 12,
+                  "Neg_Avg_Days": "19 days 20:00:00",
+                  "Neg_Avg_Change": -2.316842511785217
+              }
+          ],
+          [
+              "^DJI",
+              {
+                  "Pos_Cooccurences": 14,
+                  "Pos_Avg_Days": "24 days 10:17:08.571428571",
+                  "Pos_Avg_Change": 2.3387981115799747,
+                  "Neg_Cooccurences": 8,
+                  "Neg_Avg_Days": "25 days 12:00:00",
+                  "Neg_Avg_Change": -3.2657827214546598
+              }
+          ],
+          [
+              "^GSPC",
+              {
+                  "Pos_Cooccurences": 12,
+                  "Pos_Avg_Days": "24 days 08:00:00",
+                  "Pos_Avg_Change": 2.6146484737483533,
+                  "Neg_Cooccurences": 5,
+                  "Neg_Avg_Days": "26 days 19:12:00",
+                  "Neg_Avg_Change": -3.301237053037964
+              }
+          ],
+          [
+              "EURUSD=X",
+              {
+                  "Pos_Cooccurences": 11,
+                  "Pos_Avg_Days": "20 days 17:27:16.363636363",
+                  "Pos_Avg_Change": 1.6152085614094176,
+                  "Neg_Cooccurences": 10,
+                  "Neg_Avg_Days": "14 days 02:24:00",
+                  "Neg_Avg_Change": -1.8608950507130853
+              }
+          ],
+          [
+              "^IXIC",
+              {
+                  "Pos_Cooccurences": 8,
+                  "Pos_Avg_Days": "23 days 15:00:00",
+                  "Pos_Avg_Change": 3.9498515755699626,
+                  "Neg_Cooccurences": 4,
+                  "Neg_Avg_Days": "41 days 18:00:00",
+                  "Neg_Avg_Change": -5.164439300103058
+              }
+          ]
+      ]
+    },
+    {
+      "title": "citigroup, rbs sued by dz bank over $641 million in bonds",
+      "author": "david mclaughlin",
+      "datetime": "2012-12-28 22:14:34",
+      "url": "http://www.bloomberg.com/news/2012-12-28/citigroup-rbs-sued-by-dz-bank-over-641-million-in-bonds.html",
+      "body": "citigroup inc. (c) ,  royal bank of scotland group plc  and  ubs ag (ubs)  were sued in separate cases in new york, accused of fraud in the sale of a total of $845 million in mortgage securities.  dz bank ag sued citigroup and rbs, while hsh nordbank ag sued ubs and rbs, according to papers filed today in new york state supreme court. the german banks say offering materials contained misrepresentations about loans backing the securities, leading to losses.  defendants wrongdoing has led directly to plaintiffs damages, which include both realized losses and loss of market value on the securities, dz bank and another entity, dg holding trust, said in the citigroup filing.  the cases add to claims against wall street banks over mortgage loans bundled into securities and sold during the u.s. housing boom. dz bank and hsh nordbank have previously sued other lenders, including goldman sachs group inc., bank of america corp. and  jpmorgan chase",
+      "sentiment_id": 1,
+      "topics": [
+          "sec",
+          "court",
+          "countrywide",
+          "lawsuit",
+          "mortgage",
+          "settlement",
+          "complaint",
+          "sued",
+          "bankamerica"
+      ],
+      "data": [
+          [
+              "^GSPC",
+              {
+                  "Pos_Cooccurences": 13,
+                  "Pos_Avg_Days": "23 days 16:36:55.384615384",
+                  "Pos_Avg_Change": 2.7437301167293873,
+                  "Neg_Cooccurences": 3,
+                  "Neg_Avg_Days": "24 days 00:00:00",
+                  "Neg_Avg_Change": -2.18046024042924
+              }
+          ],
+          [
+              "CL=F",
+              {
+                  "Pos_Cooccurences": 12,
+                  "Pos_Avg_Days": "24 days 16:00:00",
+                  "Pos_Avg_Change": 4.001621268250952,
+                  "Neg_Cooccurences": 8,
+                  "Neg_Avg_Days": "20 days 09:00:00",
+                  "Neg_Avg_Change": -5.081285844364158
+              }
+          ],
+          [
+              "^IXIC",
+              {
+                  "Pos_Cooccurences": 12,
+                  "Pos_Avg_Days": "29 days 16:00:00",
+                  "Pos_Avg_Change": 4.255572873496898,
+                  "Neg_Cooccurences": 3,
+                  "Neg_Avg_Days": "32 days 00:00:00",
+                  "Neg_Avg_Change": -2.91916545242255
+              }
+          ],
+          [
+              "^DJI",
+              {
+                  "Pos_Cooccurences": 10,
+                  "Pos_Avg_Days": "26 days 21:36:00",
+                  "Pos_Avg_Change": 2.562269174877877,
+                  "Neg_Cooccurences": 4,
+                  "Neg_Avg_Days": "7 days 12:00:00",
+                  "Neg_Avg_Change": -1.4715610549104334
+              }
+          ],
+          [
+              "EURUSD=X",
+              {
+                  "Pos_Cooccurences": 8,
+                  "Pos_Avg_Days": "20 days 18:00:00",
+                  "Pos_Avg_Change": 1.2288275333056675,
+                  "Neg_Cooccurences": 5,
+                  "Neg_Avg_Days": "27 days 19:12:00",
+                  "Neg_Avg_Change": -2.810711412357903
+              }
+          ],
+          [
+              "GBPUSD=X",
+              {
+                  "Pos_Cooccurences": 6,
+                  "Pos_Avg_Days": "14 days 00:00:00",
+                  "Pos_Avg_Change": 0.9304615332121849,
+                  "Neg_Cooccurences": 4,
+                  "Neg_Avg_Days": "23 days 00:00:00",
+                  "Neg_Avg_Change": -1.0823025371763277
+              }
+          ],
+          [
+              "GC=F",
+              {
+                  "Pos_Cooccurences": 6,
+                  "Pos_Avg_Days": "19 days 12:00:00",
+                  "Pos_Avg_Change": 3.590256773918469,
+                  "Neg_Cooccurences": 6,
+                  "Neg_Avg_Days": "10 days 00:00:00",
+                  "Neg_Avg_Change": -2.539485429941735
+              }
+          ]
+      ]
+    },
+    {
+      "title": "new zealand forecaster expects ample rain for dairy farmers",
+      "author": "tracy withers",
+      "datetime": "2013-01-07 01:24:31",
+      "url": "http://www.bloomberg.com/news/2013-01-07/new-zealand-forecaster-expects-ample-rain-for-dairy-farmers.html",
+      "body": "new zealand  will avoid soaring temperatures and dry rivers in the first quarter, adding to signs of minimal disruption to milk production, which generates a quarter of the nations exports.  rainfall, river flows and soil moisture will be normal for this time of year in most regions in the three months through march, with the exception of the east of the north island where it may be drier, the national institute of water and atmospheric research said today in a  report  on its website. temperatures will be average everywhere except the west of the north island where it may be cooler, the government agency said.  most milk production in the worlds biggest dairy exporter occurs in the west and north regions of the  north island  where weather conditions will be favorable, according to the wellington-based institute. there is a 30 percent chance of below-normal rainfall in the waikato and taranaki dairy regions.  dairy, meat and wool comprise about 40 percent of the nations exports, with merchandise shipments making up 30 percent of gross domestic product. a severe la nina weather pattern in early 2008 led to drought and helped tip the nation into a recession as milk production slowed and farmers reduced sheep and cattle numbers.  to contact the reporter on this story: tracy withers in wellington at   twithers@bloomberg.net   to contact the editor responsible for this story: stephanie phang at   sphang@bloomberg.net",
+      "sentiment_id": 0,
+      "topics": [
+          "newzealand",
+          "zealand",
+          "wellington",
+          "nz",
+          "bollard",
+          "christchurch",
+          "nzbillion",
+          "tracywithers",
+          "twithersbloombergnet"
+      ],
+      "data": [
+          [
+              "CL=F",
+              {
+                  "Pos_Cooccurences": 7,
+                  "Pos_Avg_Days": "16 days 17:08:34.285714285",
+                  "Pos_Avg_Change": 3.8549359299451824,
+                  "Neg_Cooccurences": 4,
+                  "Neg_Avg_Days": "16 days 18:00:00",
+                  "Neg_Avg_Change": -3.5282106250893595
+              }
+          ],
+          [
+              "^GSPC",
+              {
+                  "Pos_Cooccurences": 7,
+                  "Pos_Avg_Days": "23 days 00:00:00",
+                  "Pos_Avg_Change": 3.273030787953073,
+                  "Neg_Cooccurences": 5,
+                  "Neg_Avg_Days": "19 days 04:48:00",
+                  "Neg_Avg_Change": -2.230695714070557
+              }
+          ],
+          [
+              "GBPUSD=X",
+              {
+                  "Pos_Cooccurences": 6,
+                  "Pos_Avg_Days": "17 days 12:00:00",
+                  "Pos_Avg_Change": 0.6496590148338796,
+                  "Neg_Cooccurences": 2,
+                  "Neg_Avg_Days": "17 days 12:00:00",
+                  "Neg_Avg_Change": -0.8102913051274397
+              }
+          ],
+          [
+              "GC=F",
+              {
+                  "Pos_Cooccurences": 6,
+                  "Pos_Avg_Days": "23 days 04:00:00",
+                  "Pos_Avg_Change": 3.4414005674049455,
+                  "Neg_Cooccurences": 9,
+                  "Neg_Avg_Days": "16 days 02:40:00",
+                  "Neg_Avg_Change": -2.4459797285644718
+              }
+          ],
+          [
+              "^IXIC",
+              {
+                  "Pos_Cooccurences": 6,
+                  "Pos_Avg_Days": "36 days 12:00:00",
+                  "Pos_Avg_Change": 4.260058813289719,
+                  "Neg_Cooccurences": 4,
+                  "Neg_Avg_Days": "40 days 00:00:00",
+                  "Neg_Avg_Change": -5.067171402030929
+              }
+          ],
+          [
+              "^DJI",
+              {
+                  "Pos_Cooccurences": 5,
+                  "Pos_Avg_Days": "21 days 09:36:00",
+                  "Pos_Avg_Change": 2.7994036365879618,
+                  "Neg_Cooccurences": 3,
+                  "Neg_Avg_Days": "19 days 08:00:00",
+                  "Neg_Avg_Change": -2.370409968606323
+              }
+          ],
+          [
+              "EURUSD=X",
+              {
+                  "Pos_Cooccurences": 4,
+                  "Pos_Avg_Days": "13 days 12:00:00",
+                  "Pos_Avg_Change": 1.7510686190896003,
+                  "Neg_Cooccurences": 2,
+                  "Neg_Avg_Days": "35 days 00:00:00",
+                  "Neg_Avg_Change": -3.385864887858238
+              }
+          ]
+      ]
+    },
+    {
+      "title": "soybeans, corn advance before government report on u.s. supplies",
+      "author": "luzi ann javier",
+      "datetime": "2013-01-09 03:29:03",
+      "url": "http://www.bloomberg.com/news/2013-01-09/soybeans-corn-advance-before-government-report-on-u-s-supplies.html",
+      "body": "soybeans climbed before a government report that may show fourth-quarter stockpiles in the u.s., the biggest grower and exporter last year, fell to the lowest level in nine years.  the contract for march delivery gained as much as 0.4 percent to $13.92 a bushel on the chicago board of trade and was at $13.9025 at 11:28 a.m. singapore time. futures reached a record $17.89 on sept. 4 as output dropped amid the most-severe midwest drought since the 1930s.  inventories probably fell to 1.98 billion bushels as of dec. 1, the lowest for the fourth  quarter  since 2003, according to the average estimate of 26 analysts surveyed by bloomberg. the u.s. department of agriculture will release the quarterly stockpiles report on jan. 11 in  washington .  the market is speculating that the u.s. figures will be adjusted downwards, joyce liu, an analyst at phillip futures pte., said by phone from singapore today.  corn for march delivery rose for a third straight day, adding 0.2 percent to $6.8975 a bushel, while wheat for delivery in the same month was little changed at $7.515 a bushel.  the corn harvest in the u.s., the biggest grower and exporter, probably fell to 10.65 billion bushels, from 12.358 billion bushels a year earlier, and a usda estimate of 10.725 billion in december, according to a separate bloomberg survey of 31 analysts. the usda will update its forecast on jan. 11.  the drought that cut u.s. harvests last year will probably persist through the next planting season, threatening a recovery in production, bryce anderson, an agricultural meteorologist at dtn, said in an interview yesterday.  to contact the reporter on this story: luzi ann javier in  singapore  at   ljavier@bloomberg.net   to contact the editor responsible for this story: james poole at   jpoole4@bloomberg.net",
+      "sentiment_id": 2,
+      "topics": [
+          "corn",
+          "soybean",
+          "bushel",
+          "wheat",
+          "crop",
+          "chicago",
+          "percentbushel",
+          "grain",
+          "usda"
+      ],
+      "data": [
+          [
+              "EURUSD=X",
+              {
+                  "Pos_Cooccurences": 6,
+                  "Pos_Avg_Days": "20 days 16:00:00",
+                  "Pos_Avg_Change": 1.305287307859528,
+                  "Neg_Cooccurences": 3,
+                  "Neg_Avg_Days": "13 days 16:00:00",
+                  "Neg_Avg_Change": -1.5432871382781659
+              }
+          ],
+          [
+              "^DJI",
+              {
+                  "Pos_Cooccurences": 5,
+                  "Pos_Avg_Days": "24 days 09:36:00",
+                  "Pos_Avg_Change": 2.3148046904401745,
+                  "Neg_Cooccurences": 2,
+                  "Neg_Avg_Days": "27 days 00:00:00",
+                  "Neg_Avg_Change": -2.661107873209923
+              }
+          ],
+          [
+              "GBPUSD=X",
+              {
+                  "Pos_Cooccurences": 4,
+                  "Pos_Avg_Days": "22 days 18:00:00",
+                  "Pos_Avg_Change": 1.1677817691840333,
+                  "Neg_Cooccurences": 3,
+                  "Neg_Avg_Days": "22 days 08:00:00",
+                  "Neg_Avg_Change": -1.4100272044214208
+              }
+          ],
+          [
+              "^IXIC",
+              {
+                  "Pos_Cooccurences": 4,
+                  "Pos_Avg_Days": "24 days 18:00:00",
+                  "Pos_Avg_Change": 1.6185026980019255,
+                  "Neg_Cooccurences": 3,
+                  "Neg_Avg_Days": "33 days 16:00:00",
+                  "Neg_Avg_Change": -3.0134822103652787
+              }
+          ],
+          [
+              "CL=F",
+              {
+                  "Pos_Cooccurences": 3,
+                  "Pos_Avg_Days": "15 days 16:00:00",
+                  "Pos_Avg_Change": 2.953974956319899,
+                  "Neg_Cooccurences": 4,
+                  "Neg_Avg_Days": "28 days 12:00:00",
+                  "Neg_Avg_Change": -7.10424346606767
+              }
+          ],
+          [
+              "GC=F",
+              {
+                  "Pos_Cooccurences": 2,
+                  "Pos_Avg_Days": "15 days 00:00:00",
+                  "Pos_Avg_Change": 2.6071824984003467,
+                  "Neg_Cooccurences": 4,
+                  "Neg_Avg_Days": "16 days 12:00:00",
+                  "Neg_Avg_Change": -1.631810498891104
+              }
+          ],
+          [
+              "^GSPC",
+              {
+                  "Pos_Cooccurences": 2,
+                  "Pos_Avg_Days": "32 days 00:00:00",
+                  "Pos_Avg_Change": 0.97327349453866,
+                  "Neg_Cooccurences": 3,
+                  "Neg_Avg_Days": "25 days 08:00:00",
+                  "Neg_Avg_Change": -1.9190089087663365
+              }
+          ]
+      ]
+    },
+    {
+      "title": "goldman sachs alumnus szes hedge fund is said to return 8%",
+      "author": "bei hu",
+      "datetime": "2013-04-23 03:05:29",
+      "url": "http://www.bloomberg.com/news/2013-04-23/goldman-sachs-alumni-sze-s-azentus-hedge-fund-said-to-return-8-.html",
+      "body": "azentus capital management ltd., led by former goldman sachs group inc. proprietary trader morgan sze, returned 8 percent before fees this year through yesterday, according to a person with knowledge of the matter.  azentuss assets stand at $1.6 billion, said the person, who declined to be identified because the information is private. hong kong-based azentus manages a global multistrategy hedge fund focused on  asia . roger denby-jones, azentuss chief operating officer, declined to comment. the eurekahedge multistrategy hedge fund index, tracking the performances of 254 pools globally, returned 2.3 percent in the first three months.  large hedge funds, which absorbed most of the new capital added to the industry since the 2008 global financial crisis, have been under pressure to deliver performances in a whipsawing market driven by political events. those with at least $5 billion of assets had more than $10 billion of net inflows in the first quarter, accounting for 67 percent of the $2.4 trillion in industry assets, according to chicago-based hedge fund research inc.  it has become very critical for larger funds to perform, said stephane pizzo, managing partner of singapore- based hedge-fund advisory company lotus peak capital pte, without mentioning any managers performances. smaller funds have been doing better as they can be more nimble.  growing assets  azentuss assets grew to more than $1.9 billion by july 2011, three months after starting, as it benefited from investor preference for the safety of large managers. it was  ranked  asias seventh-largest hedge-fund company last year by trade journal institutional investor.  asia hedge funds  returned  almost 6 percent in the first three months, outperforming global peers 3 percent gain, according to preliminary data from singapore-based eurekahedge pte. managers investing across the region have been helped by a more than 50 percent rally in the  nikkei 225 stock average (nky)  since the end of october as  japan s prime minister shinzo abe expanded stimulus to pull the country out of 15 years of deflation.  azentus reversed earlier losses to post a gain of almost 1 percent last year, two people with knowledge of the return said in january. senrigan capital group ltd., an asia-focused event- driven hedge-fund manager backed by blackstone group lp, has seen its assets fall to $361 million from just over $1 billion in april 2011 amid difficulties to generate returns in the regions merger market, according to an investor document.  departing partner  edoma partners llp, led by pierre-henri flamand, decided to close down after it lost money and assets shrank in unprecedented market conditions, he said in an e-mailed statement in november.  sze was once jointly responsible for the goldman sachs principal strategies proprietary trading team with flamand. after flamands departure in march 2010 to start his own hedge fund, sze was global head of the banks largest proprietary trading unit, which at its peak managed $3 billion of asia investments, people familiar with the matter said in july 2011.  azentuss partner bruce kirk left in march, according to a posting on the website of the citys securities and futures commission. kirk, one of azentuss six founding partners who specialized in japan investments, left on good terms, denby- jones said. azentus has informed investors and brokers of his departure, he added.  kirk didnt immediately reply to an e-mail sent to him seeking comment on his departure.  to contact the reporter on this story: bei hu in  hong kong  at   bhu5@bloomberg.net .  to contact the editor responsible for this story: andreea papuc at   apapuc1@bloomberg.net",
+      "sentiment_id": 2,
+      "topics": [
+          "hedgefund",
+          "hedge",
+          "fund",
+          "manager",
+          "brevan",
+          "brevanhoward",
+          "macro",
+          "eurekahedge",
+          "howard"
+      ],
+      "data": [
+          [
+              "CL=F",
+              {
+                  "Pos_Cooccurences": 10,
+                  "Pos_Avg_Days": "15 days 19:12:00",
+                  "Pos_Avg_Change": 3.015864241638856,
+                  "Neg_Cooccurences": 6,
+                  "Neg_Avg_Days": "26 days 08:00:00",
+                  "Neg_Avg_Change": -5.230027091825207
+              }
+          ],
+          [
+              "^DJI",
+              {
+                  "Pos_Cooccurences": 8,
+                  "Pos_Avg_Days": "19 days 21:00:00",
+                  "Pos_Avg_Change": 1.764601368630067,
+                  "Neg_Cooccurences": 3,
+                  "Neg_Avg_Days": "24 days 00:00:00",
+                  "Neg_Avg_Change": -3.2024107638783783
+              }
+          ],
+          [
+              "GC=F",
+              {
+                  "Pos_Cooccurences": 7,
+                  "Pos_Avg_Days": "19 days 10:17:08.571428571",
+                  "Pos_Avg_Change": 3.9487677860406043,
+                  "Neg_Cooccurences": 7,
+                  "Neg_Avg_Days": "16 days 00:00:00",
+                  "Neg_Avg_Change": -2.90568606524523
+              }
+          ],
+          [
+              "EURUSD=X",
+              {
+                  "Pos_Cooccurences": 6,
+                  "Pos_Avg_Days": "31 days 04:00:00",
+                  "Pos_Avg_Change": 1.3703454734212777,
+                  "Neg_Cooccurences": 2,
+                  "Neg_Avg_Days": "18 days 12:00:00",
+                  "Neg_Avg_Change": -1.6658929223029686
+              }
+          ],
+          [
+              "^IXIC",
+              {
+                  "Pos_Cooccurences": 6,
+                  "Pos_Avg_Days": "38 days 12:00:00",
+                  "Pos_Avg_Change": 2.7347202200467113,
+                  "Neg_Cooccurences": 2,
+                  "Neg_Avg_Days": "42 days 00:00:00",
+                  "Neg_Avg_Change": -7.472146098395971
+              }
+          ],
+          [
+              "GBPUSD=X",
+              {
+                  "Pos_Cooccurences": 4,
+                  "Pos_Avg_Days": "20 days 00:00:00",
+                  "Pos_Avg_Change": 1.2209824625282049,
+                  "Neg_Cooccurences": 3,
+                  "Neg_Avg_Days": "19 days 00:00:00",
+                  "Neg_Avg_Change": -1.2195564210198497
+              }
+          ],
+          [
+              "^GSPC",
+              {
+                  "Pos_Cooccurences": 3,
+                  "Pos_Avg_Days": "23 days 08:00:00",
+                  "Pos_Avg_Change": 1.3595981684000746,
+                  "Neg_Cooccurences": 2,
+                  "Neg_Avg_Days": "21 days 12:00:00",
+                  "Neg_Avg_Change": -2.4811599218831626
+              }
+          ]
+      ]
+    }
+  ]

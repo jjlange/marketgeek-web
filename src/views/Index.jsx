@@ -32,12 +32,12 @@ import SelectBox from "./Components/SelectBox";
 function Index() {
     
   // Set the initial states of the page
-  const [emailValue, setEmailValue] = useState('');
+  const [emailValue, setEmailValue] = useState('test@test.com');
+  const [passwordValue, setPasswordValue] = useState('test');
 
-  const [passwordValue, setPasswordValue] = useState('');
   const [signInMessage, setSignInMessage] = useState('Enter your email address and password.');
 
-  // Sign Up
+  // Sign Up 
   const [signUpStep, setSignUpStep] = useState(1);
 
   const devMode = useState(process.env.REACT_APP_DEV_MODE ? true : false);

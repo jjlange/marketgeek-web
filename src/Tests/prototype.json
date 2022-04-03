@@ -1,0 +1,37 @@
+{
+    "error": false,
+    "company": {
+      "result": true,
+      "company_details": {
+        "name": "Apple Inc.",
+        "current_price": 171.14,
+        "indicator": 0,
+        "indicator_price": 1.12,
+        "indicator_percentage": 0.65,
+        "datetime": "191220211600",
+        "url_graph": "www.fuckyou.com"
+        
+      }
+    },
+    "search_term": "APPL",
+    "results": {
+      "0": {
+        "title": "Apple - Richest company in the world yet again.",
+        "url": "http://www.bbc.co.uk/news/apple/richestfuckingcompany",
+        "description": "Lorem Ipsum dolar mitun demae lorane dore nuronde ironalso.",
+        "indicator": 0
+      },
+      "1": {
+        "title": "Apple - Richest company in the world yet again.",
+        "url": "http://www.bbc.co.uk/news/apple/richestfuckingcompany",
+        "description": "Lorem Ipsum dolar mitun demae lorane dore nuronde ironalso.",
+        "indicator": 1
+      }  ,
+      "2": {
+        "title": "Apple - Richest company in the world yet again.",
+        "url": "http://www.bbc.co.uk/news/apple/richestfuckingcompany",
+        "description": "Lorem Ipsum dolar mitun demae lorane dore nuronde ironalso.",
+        "indicator": 1
+      } 
+    }
+  }

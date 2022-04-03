@@ -29,6 +29,10 @@ export const removeToken = () => {
   sessionStorage.removeItem('token');
 }
  
+export const removeUser = () => {
+  sessionStorage.removeItem('user');
+}
+ 
 // Save the token to the session storage
 export const setToken = (token) => {
   sessionStorage.setItem('token', token);

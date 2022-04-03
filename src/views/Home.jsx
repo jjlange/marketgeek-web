@@ -10,21 +10,23 @@
  **/
 
 // Imports
-import React from "react";
+import React, {useState, useEffect} from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 // Import icons from Heroicons
-import { CashIcon, BellIcon, ViewGridIcon, NewspaperIcon, StarIcon, PlusIcon } from '@heroicons/react/outline'
+import { CashIcon, BellIcon, ViewGridIcon, NewspaperIcon, StarIcon, PlusIcon, CheckCircleIcon } from '@heroicons/react/outline'
 
 // Import utilities
-import { getUser, removeToken } from "../Utils/User";
+import { getUser, removeToken, removeUser, setUser } from "../Utils/User";
 
+import { fetchPopularStocks, fetchSentiments} from "../Hooks/financialFetch";
 // Import components
 import Widget from "./Components/Widget";
 
 // Import test json files
 import tradingStocks from "../Tests/tradingStocks.json";
+import searchResults from "../Tests/searchResults.json"
 import SearchBox from "./Components/SearchBox";
 
 // Home page 
@@ -33,13 +35,41 @@ function Home() {
   // Retrieve user session
   const userSession = getUser();
 
+  const [popularStocks, setPopularStocks] = useState([]);
+  const [stocks, setStocks] = useState([])
+  const [positiveSentiment, setPositiveSentiment] = useState(0);
+  const [negativeSentiment, setNegativeSentiment] = useState(0);
+  const [neutralSentiment, setNeutralSentiment] = useState(0);
+
+  const [test, setTest] = useState(0)
+
+
+  
+  // fetch popular stocks
+  useEffect(() => { 
+    fetchPopularStocks(4).then((result) => {
+      setPopularStocks(result)
+    })
+  }, []);
+
+  // get positive sentiment count
+  useEffect(() => {
+    fetchSentiments().then((result) => {
+      setPositiveSentiment(result[0].positive)
+      setNeutralSentiment(result[0].neutral)
+      setNegativeSentiment(result[0].negative)
+      //setTest(sentimentResult)
+      
+    })
+  }, []);
+
   // User
   const user = {  
     name: userSession.name,
     email: userSession.email,
     firstName: userSession.name.split(" ")[0],
     lastName: userSession.name.split(" ")[1],
-    role: 1,
+    role: 1
   }
 
   // Use Navigation hook
@@ -49,13 +79,30 @@ function Home() {
   const signOut = () => {
         // Remove the user session
         removeToken(null);
+        removeUser();
+        
         // Redirect to the login page
         navigate('/');
   }
 
-  // Load most popular stocks
-  const loadMostPopularStocks = () => {
+  // (int) positive, (int) negative, (int) neutral
+  // return (array) [positive: 20%, negative, 30%, neutral: 50%]
+  const calculateSentiment = (positive, negative, neutral) => {
+    var cost = positive + negative + neutral
+
+    positive = (positive/cost) * 100
+    negative = (negative/cost) * 100
+    neutral  = (neutral/cost) * 100
+
+    return [
+      {
+        "positive": positive,
+        "negative": negative,
+        "neutral": neutral
+      }
+    ]
   }
+
 
   return (
     <div className="bg-white dark:bg-slate-900 min-h-screen font-ubuntu overflow-visible">
@@ -66,7 +113,7 @@ function Home() {
               <div className="pt-6 max-w-lg px-4 md:px-0 md:max-w-2xl lg:max-w-6xl mx-auto">
                 <div className="flex">
                   
-                  <div className="w-full flex text-3xl font-bold items-center">
+                  <div className="space-x-4 w-full flex text-3xl font-bold items-center">
                     <CashIcon className="w-10 h-10 mr-2.5" />
                     MarketGeek   
                     <SearchBox placeholder="Search for topic" /> 
@@ -90,10 +137,11 @@ function Home() {
                       </Link>
                   </div>
                 </div>
-                            <div className="grid grid-cols-1 lg:grid-cols-4 lg:gap-x-6">
-              <div className="relative border border-gray-100 dark:border-gray-800 rounded-lg bg-white/90 dark:bg-gray-800/50 mt-12 md:shadow-xl lg:h-[38em]">
+
+            <div className="grid grid-cols-1 lg:grid-cols-4 lg:gap-x-6">
+              <div className="relative border border-gray-100 dark:border-gray-800 rounded-lg bg-white/90 dark:bg-gray-800/50 mt-12 md:shadow-xl lg:h-[34.3em]">
                 <div className="w-full pt-8 pb-8 pl-2 pr-2">
-                  <img src="" className="w-32 h-32 mx-auto rounded-full border border-gray-600" alt="Profile" />
+                  <img src="https://t4.ftcdn.net/jpg/02/15/84/43/360_F_215844325_ttX9YiIIyeaR7Ne6EaLLjMAmy4GvPC69.jpg" className="w-32 h-32 mx-auto rounded-full border border-gray-600" alt="Profile" />
                   <h2 className="text-3xl font-medium text-gray-800 dark:text-gray-200 text-center mt-4">{user.name}</h2>
                   <div className="flex flex-row md:flex-col xl:flex-row md:space-y-4 xl:space-y-0 text-gray-800 dark:text-gray-200 mt-4 mx-auto w-full">
                     <div className="flex-1 text-center">
@@ -146,39 +194,119 @@ function Home() {
               </div>
 
               <div className="col-span-3">
-                <div className="border border-gray-100 dark:border-gray-800 col-span-2 md:col-span-1 pt-8 pb-8 pl-8 rounded-lg bg-white/90 dark:bg-gray-800/50 mt-12 md:shadow-2xl">
-                  <h2 className="font-medium text-5xl text-sky-700 leading-[1.5em] dark:text-gray-200">
-                    Dashboard
-                  </h2>
-                  <div className="text-gray-800 dark:text-gray-200 mt-4 text-lg">
-                    <h3>
-                      Welcome to your dashboard, {user.firstName}! <br />See what's happening with stocks around the world and be the first to know when prices change.
-                    </h3>
+                <div className="md:grid grid-rows-1 grid-cols-1 md:grid-cols-2 gap-x-4">
+                  <div className="border border-gray-100 dark:border-gray-800 col-span-2 md:col-span-2 pt-8 pb-8 pl-8 rounded-lg bg-white/90 dark:bg-gray-800/50 mt-12 md:shadow-2xl">
+                    <h2 className="font-medium text-5xl text-sky-700 leading-[1.5em] dark:text-gray-200">
+                      Dashboard
+                    </h2>
+                    <div className="text-gray-800 dark:text-gray-200 mt-4 text-lg">
+                      <h3>
+                        Welcome to your dashboard, {user.firstName}! <br />See what's happening with stocks around the world and be the first to know when prices change.
+                      </h3>
+                    </div>
                   </div>
-                </div>
 
-                <div className="md:grid grid-rows-1 grid-cols-1 md:grid-cols-3 gap-2">
-                  <Widget title="Notifications"
-                          textAlign="center"
+                  <Widget title="Sentiments"
                           columns="1"
                           view={<h3 className="text-xl mt-2 text-gray-800 dark:text-slate-100 break-words leading-normal font-normal">
-                            No new notifications
+                           <div>
+                            <div>
+                              <div className="mt-6" aria-hidden="true">
+                                <div className="bg-gray-200 rounded-full overflow-hidden">
+                                  <div className="h-2 bg-green-400 rounded-full" style={{width: positiveSentiment + '%'}}></div>
+                                </div>
+                                <div className="hidden sm:grid w-full text-sm font-medium text-green-400 mt-2">
+                                  <div className="text-green-400">Positive ({positiveSentiment} %)</div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div>
+                              <div className="mt-6" aria-hidden="true">
+                                <div className="bg-gray-200 rounded-full overflow-hidden">
+                                <div className="h-2 bg-yellow-400 rounded-full" style={{width: neutralSentiment + '%'}}></div>
+                                </div>
+                                <div className="hidden sm:grid w-full text-sm font-medium text-yellow-400 mt-2">
+                                  <div className="text-yellow-400">Neutral ({neutralSentiment} %)</div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div>
+                              <div className="mt-6" aria-hidden="true">
+                                <div className="bg-gray-200 rounded-full overflow-hidden">
+                                <div className="h-2 bg-red-400 rounded-full" style={{width: negativeSentiment + '%'}}></div>
+                                </div>
+                                <div className="hidden sm:grid w-full text-sm font-medium text-yellow-400 mt-2">
+                                  <div className="text-red-400">Negative ({negativeSentiment} %)</div>
+                                </div>
+                              </div>
+                            </div>
+                           </div>
                           </h3>}
-                          icon={<BellIcon className="w-10 h-10 mx-auto text-sky-400" />}
                   ></Widget>
 
-                  <Widget title="Your Trading"
-                          columns="2"
+                  <Widget
+                          textAlign="left"
+                          columns="1"
                           view={
-                            <div className="text-2xl mt-2 text-gray-800 dark:text-slate-100 break-words leading-normal font-normal  overflow-y-scroll h-32 pr-6">
-                              { tradingStocks.map(stock => (
-                                <div className="flex items-center mt-4">
-                                  <div className="w-10 h-10 mr-2.5">
-                                    {stock.id}.
+                          <div>
+                              <h3 className="text-2xl text-gray-800 dark:text-slate-100 break-words leading-normal font-medium mt-2">
+                                Positive Sentiment News
+                              </h3>
+                              <div className="border-t border-gray-700 mt-4 mb-4"></div>
+                              <div className="text-xl mt-2 text-gray-800 dark:text-slate-100 break-words leading-normal font-normal overflow-y-none h-32">
+                                
+                              { searchResults.map((stock, index) => ( 
+                                <div className="flex items-center">
+                                  {(() => {
+                                    if(searchResults[index].sentiment_id == 0) {
+                                      return (
+                                        <div className="h-10 flex items-center">
+                                          <div className="">
+                                            <a href={searchResults[index].url} target="_blank" rel="noreferrer" className="hover:underline text-sky-600 dark:text-gray-200">
+                                              <p className="text-xl mt-1 first-letter:uppercase">
+                                                {stock.title}.
+                                              </p>
+                                            </a>
+                                          </div>
+                                        </div>
+                                      )
+                                    }
+                                  })()}
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                          }
+                          icon={<CheckCircleIcon className="w-10 h-10 text-green-400 mt-4 mb-4" />}
+                  ></Widget>
+                </div>
+
+               
+              </div>
+            </div>
+            <Widget title="Top News"
+                          view={
+                            <div className="text-2xl mt-2 text-gray-800 dark:text-slate-100 break-words leading-normal font-normal  overflow-y-scroll h-[15em]">
+                              { popularStocks.map((stock, index) => (
+                                <div className="flex items-center mt-8">
+                                  <div className="w-10 h-10">
+                                    {index + 1}.
                                     </div>
-                                    <div className="w-full">
-                                      <p className="text-xl mt-1">{stock.name}</p>
-                                      <p className="block font-light text-lg mt-1 bg-sky-300 w-16 text-center rounded-md text-black">{stock.symbol}</p>
+                                    <div className="w-full ml-2">
+                                      <a href={stock.article_url} className="hover:underline" target="_blank"><p className="text-xl mt-1">{stock.title}</p></a>
+                                      <div className="flex space-x-2">
+                                          { popularStocks[index].tickers.map((ticker, i) => {
+                                            return (
+                                              <p className="block font-light text-lg mt-1 bg-sky-300 w-16 text-center rounded-md text-black">
+                                              { popularStocks[index].tickers[i] }
+                                              </p>
+                                            )
+                                          })}
+
+          
+                                      </div>
                                     </div>
                                     <div className="flex-shrink-0 float-right">
                                       <p className="font-light text-2xl mt-1">{stock.price} &nbsp;{stock.currency}</p>
@@ -188,48 +316,8 @@ function Home() {
                             </div>
                           }
                   ></Widget>
-
-                  <Widget title="Untitled Widget"
-                          columns="1"
-                          view={<h3 className="text-xl mt-2 text-gray-800 dark:text-slate-100 break-words leading-normal font-normal">
-                            This is a new Widget component.
-                          </h3>}
-                  ></Widget>
-
-                  <Widget title="The Market"
-                          columns="1"
-                          view={<h3 className="text-xl mt-2 text-gray-800 dark:text-slate-100 break-words leading-normal font-normal">
-                            Error occurred while fetching data.
-                          </h3>}
-                  ></Widget>
-
-                  <Widget title="Untitled Widget"
-                          columns="1"
-                          view={<h3 className="text-xl mt-2 text-gray-800 dark:text-slate-100 break-words leading-normal font-normal">
-                            This is a new Widget component.
-                          </h3>}
-                  ></Widget>
-
-                  <Widget title="Admin-Tools"
-                          columns="3"
-                          view = {
-                            <div className="text-xl text-sky-100 pt-2">
-                              <button onClick={signOut} className="text-red-500 dark:text-red-200">Sign Out User</button>
-                            </div>
-                          }
-                  ></Widget>
-
-                  <Widget title="This is a new Widget"
-                          column="1"
-                          view= {
-                            <p>Hello, world!</p>
-                          }
-                  ></Widget>
-                </div>
-              </div>
-            </div>
-              </div>
-            </div>
+          </div>
+        </div>
 
           {/* Main Content */}
           <div className="mx-auto max-w-md md:max-w-2xl lg:max-w-6xl">

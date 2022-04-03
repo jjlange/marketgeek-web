@@ -1,81 +1,237 @@
 import React, { useState } from "react";
+import { useEffect } from "react";
+import { useNavigate, useSearchParams } from "react-router-dom";
+import { SearchIcon } from '@heroicons/react/outline';
+import { Link } from "react-router-dom";
+import searchResults from "../Tests/searchResults.json"
 
-const Search = (props) => { 
-  const [enteredTitle, setEnteredTitle] = useState('');//individual state approach 1
-  const [enteredAuthor, setEnteredAuthor] = useState('');//individual state approach 2
-  const [enteredDate, setEnteredDate] = useState('');//individual state approach 3
-  // const [userInput, setUserInput] = useState({
-  //   enteredTitle: '',
-  //   enteredAmount: '',
-  //   enteredDate: ''
-  // });
+// Import icons from Heroicons
+import { CashIcon, BellIcon, ViewGridIcon, NewspaperIcon, StarIcon, PlusIcon } from '@heroicons/react/outline'
 
-  const titleChangeHandler = (event) => {//components multiple states
-    setEnteredTitle(event.target.value);
-    // setUserInput({
-    //   ...userInput,//ovveride enteredTitle using ... - spread operator
-    //   enteredTitle:event.target.value,//puls out key-value pair and adds them to new object 
-    // })
-    // setUserInput((prevState) => {
-    //   return {...prevState,enteredTitle: event.target.value };
-    // });//update is scheduled, React garantee latest state snapshot
-  };
+// Import utilities
+import { getUser, removeToken, removeUser } from "../Utils/User";
 
-  const authorChangeHandler = (event) => {//components multiple states
-    setEnteredAuthor(event.target.value);   
-    // setUserInput({
-    //   ...userInput,//ovveride enteredTitle using ... - spread operator
-    //   enteredAmount:event.target.value,//puls out key-value pair and adds them to new object  
-    // })
-  };
+// Import test json files
+import SearchBox from "./Components/SearchBox";
+import { fetchPrice, fetchTicker } from "../Hooks/financialFetch";
 
-  const dateChangeHandler = (event) => {//components multiple states
-    setEnteredDate(event.target.value);
-    // setUserInput({
-    //   ...userInput,//ovveride enteredTitle using ... - spread operator
-    //   enteredDate:event.target.value,//puls out key-value pair and adds them to new object  
-    // })//this an alternative to have individual tree slices
-  };
-  const submitHandler = (event) =>{
-    event.preventDefault();
-    const searchData = {
-      title:enteredTitle,
-      author:enteredAuthor,
-      date:new Date(enteredDate)
-    };
-    props.onSaveSearchData(searchData);//executed 
-    setEnteredTitle('');//after form get submites, set title to empty string 
-    setEnteredAuthor('');
-    setEnteredDate('');
-  };
+const Search = (props,{ searchQuery, setSearchQuery }) => {
+     // Retrieve user session
+    const userSession = getUser(); // user, null
 
+    var user = {
+      name: (""),
+      email: (""),
+      firstName:(""),
+      lastName: (""),
+      role: -1
+    }
+
+    if(userSession) {
+      // User
+      user = {  
+        name: userSession.name,
+        email: userSession.email,
+        firstName: userSession.name.split(" ")[0],
+        lastName: userSession.name.split(" ")[1],
+        role: 1
+      }
+    }
+
+
+    function IndicatorCircle(result) {
+      switch(result) {
+        case 0:
+          return (
+            <div className="flex-col mt-2 w-10 h-10 rounded-full bg-green-400">
+             </div>          
+          )
+        case 1:
+          return(
+            <div className="flex-col mt-2 w-10 h-10 rounded-full bg-red-400">
+            </div>  
+          )
+        case 2:
+          return(
+            <div className="flex-col mt-2 w-10 h-10 rounded-full bg-yellow-400">
+            </div>
+          )
+        default:
+          return (
+            <div className="flex-col mt-2 w-10 h-10 rounded-full bg-green-400">
+            </div>          
+          )
+      }
+    }
+ 
+  
+    // Use Navigation hook
+    const navigate = useNavigate();
+    
+    
+    // Method to sign out the user
+    const signOut = () => {
+          // Remove the user session
+          removeToken(null);
+          removeUser();
+          // Redirect to the login page
+          navigate('/');
+    }
+
+  
+  const [searchParams, setSearchParams] = useSearchParams()
+
+  const name = searchParams.get("q")
+
+  const [searchSymbol, setSearchSymbol] = useState('');
+  const [searchSymbolPrice, setSearchSymbolPrice] = useState(0);
+  const [searchCompany, setSearchCompany] = useState(' ');
+  
+
+  useEffect(() => { // fetch ticker and price when component is loaded
+    fetchTicker(name).then((result) => { // Run the ticker and store value in result once loaded
+      setSearchSymbol(result.ticker)
+      setSearchCompany(result.name)
+      fetchPrice(result.ticker).then((result2) => { // Run the price with result as the argument and store price in result2
+        setSearchSymbolPrice(result2) // Set the price
+      })
+    }) 
+  }, []);
+
+
+  var data = Array.from(searchResults);
+  console.log(data)
   return (
-    <form onSubmit={submitHandler}>
-      <div className="bg-red dark:bg-slate-900 min-h-screen px-4 font-ubuntu overflow-visible relative">
+    <div className="bg-white dark:bg-slate-900 min-h-screen font-ubuntu overflow-visible">
+        {/* Logo and Buttons */}
         <div className="">
-          <label>Title</label>
-          <input type="text" value={enteredTitle} onChange={titleChangeHandler}/>
-        </div>
-      </div>
-      <div className="bg-red dark:bg-slate-900 min-h-screen px-4 font-ubuntu overflow-visible relative">
-        <div className="">
-          <label>Author</label>
-          <input amount="text" min="0.01" value={enteredAuthor} onChange={authorChangeHandler} />
-        </div>
-      </div>
-      <div className="new-expense__controls">
-        <div className="new-expense__control">
-          <label>Date</label>
-          <input type="date" min="01-01-1970" max="31-12-2050" value={enteredDate} onChange={dateChangeHandler}/>
-        </div>
-      </div>
-      <div className="new-expense__actions">
-        <button type="button" onClick={props.onCancel}>Cancel</button>{/*button does not submit the form because type is button, function stored onCancel in newExpense.js*/}
-        <button type="submit">Search</button>
-      </div>
-    </form>
-    /*type of input data is text and and number - numerical value, Form submision button*/
+          <div className="relative text-gray-800 dark:text-gray-100 w-full mx-auto">
+            <div className="mx-auto overflow-hidden pb-3">
+              <div className="pt-6 max-w-2xl px-2 md:max-w-4xl lg:max-w-screen-xl mx-auto">
+                <div className="flex">
+                  
+                  <div className="space-x-4 w-full flex text-3xl font-bold items-center">
+                    <CashIcon className="w-10 h-10 mr-2.5" />
+                    MarketGeek   
+                    <SearchBox value={name} placeholder="Search for topic" /> 
+                  </div>
+
+                  <div className="flex flex-shrink-0 justify-end">
+                    { userSession && user.role === 1 && 
+                        <div className="mr-6">
+                          <button type="button" className="hidden lg:inline-flex items-center px-4 md:px-4 py-[0.4em] border text-base border-transparent font-medium rounded-lg text-white bg-gray-700/80 hover:bg-gray-700/70 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 transition ease-in">
+                            Internal Area
+                          </button>
+                        </div>
+                    }
+
+                    { userSession ?
+                      <button type="button" className="inline-flex items-center px-4 md:px-4 py-[0.4em] border text-base border-transparent font-medium rounded-lg text-white bg-red-600/80 hover:bg-red-500/70 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition ease-in" onClick={signOut}>
+                        Sign Out
+                      </button>
+                      :
+                      <div className="w-full justify-end flex items-center">
+                      <Link to='/' className="mx-2 inline-flex items-center px-4 md:px-6 py-[0.4em] border text-base border-transparent font-medium rounded-lg text-white bg-sky-800/80 hover:bg-sky-800/70 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500 transition ease-in">
+                        Go home
+                      </Link>
+                    </div>
+                      
+                    }
+                      <Link to="/search"> 
+                     <button type="button" className="mx-2 inline-flex md:hidden items-center px-4 md:px-6 py-[0.4em] border text-base border-transparent font-medium rounded-lg text-white bg-sky-800/80 hover:bg-sky-800/70 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500 transition ease-in">
+                        Search
+                      </button>
+                      </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {/* Main Content */}
+          <div className="mx-auto max-w-2xl px-4 md:max-w-4xl lg:max-w-screen-xl mt-8"> 
+          <div className="w-full text-3xl">
+          <h3 className="text-4xl font-bold">Search</h3>
+          <div className="max-w-xl rounded-md mt-4">
+          <SearchBox value={name} placeholder="Search for topic" /> 
+                 <div className="max-w-lg pt-0.5 pb-8">                                  
+                  <div className="flex flex-row space-x-4  text-gray-800 dark:text-gray-200 mt-4 mx-auto">
+                    <div className=" text-center">
+                        <button type="button" className="inline-flex items-center px-6 py-[0.4em] border text-base border-transparent font-medium rounded-lg text-white bg-sky-800/80 hover:bg-sky-800/70 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500 transition ease-in">
+                          All
+                        </button>
+                    </div>
+                    <div className="text-center">
+                        <button type="button" className="inline-flex items-center px-6 py-[0.4em] border text-base border-transparent font-medium rounded-lg text-white bg-sky-800/80 hover:bg-sky-800/70 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500 transition ease-in">
+                          News
+                        </button>
+                    </div>
+                    <div className="text-center">
+                        <button type="button" className="inline-flex items-center px-6 py-[0.4em] border text-base border-transparent font-medium rounded-lg text-white bg-sky-800/80 hover:bg-sky-800/70 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500 transition ease-in">
+                         Securities
+                        </button>
+                    </div>
+                  </div>
+                  <div className="space-x-4 pt-[2rem] text-2xl font-bold">
+                    <h2 className="text-xl inline-flex font-medium">Results for: <span className="font-light ml-2.5">”{name}”</span></h2>
+                  </div>
+                </div>
+            </div>
+            <div className="flex flex-col-reverse md:flex-row space-y-reverse">
+              <div className="w-full">
+              { data.map((result, index) => (  
+                <div>
+                {(() => {
+                  if(searchResults[index].title.toLowerCase().includes(name.toLowerCase()) || searchResults[index].body.includes(name)) {
+                    return (
+                    <div className="flex flex-col mt-6"> 
+                      <div className="flex">           
+                          <div className="w-16">
+                              { IndicatorCircle(result.sentiment_id) }    
+                          </div>
+  
+                          <div className="mt-2 ml-5">
+                              <p className=" font-semibold first-letter:uppercase">{result.title}</p>
+                              <div>
+                                <a href={result.url} target="_blank" rel="noreferrer" className="text-sm text-sky-600 underline">{result.url}</a>
+                              </div>
+                              <div className="text-sm font-light mt-2 max-w-2xl break-words first-letter:uppercase">
+                                <p className="">{result.body.slice(2, 520)}</p>
+                              </div>
+                          </div>
+                      </div>  
+                    </div>    
+                    )
+                  }
+                  })()}
+                </div>    
+                ))}  
+ 
+                <p className="text-center text-base mt-4 mb-4  font-semibold">No more news articles found, please try a different keyword.</p>
+
+              </div>
+
+              { searchSymbolPrice != 0 &&
+                <div className="w-1/4 bg-sky-100 dark:bg-sky-700/90 border border-sky-300 dark:border-sky-900/90 rounded-md ml-8 dark:text-slate-200 h-full pb-12 pt-6">
+                  <div className="p-2 rounded-md">
+                      <div>
+                        <h2 className="text-2xl font-medium mt-2 truncate items-center">
+                          {searchCompany} 
+                          <p className="text-sm font-light">({searchSymbol})</p>
+                        </h2>
+                        <br/>
+                        <p>{searchSymbolPrice} USD</p>
+                      </div>
+                  </div>
+                </div>
+              }
+            </div>
+          </div>
+            {/* Footer */}
+           </div>
+           </div>              
+          </div>
+        </div> 
   );
+ 
 };
 
 export default Search;

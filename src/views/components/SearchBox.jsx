@@ -27,7 +27,7 @@ const SearchBox = (props) => {
             />         
              </div>   
              <div className={props.showButton ? "flex" : "hidden"}>
-                <button type="submit" className="bg-sky-700 hover:bg-sky-700/80 text-white px-3 py-1.5 items-center text-lg rounded-r-md">
+                <button type="submit" className="bg-sky-700 hover:bg-sky-700/80 text-white px-4 py-1.5 items-center text-lg rounded-md ml-2">
                     Search
                 </button>
             </div>                  

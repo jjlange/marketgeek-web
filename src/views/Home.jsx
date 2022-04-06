@@ -85,12 +85,20 @@ function Home() {
 
   return (
     <div className="bg-white dark:bg-slate-900 min-h-screen font-ubuntu overflow-visible">
+        <div className="w-full absolute top-32">
+          <div className="w-[12em] h-[12em] md:w-[45em] md:h-[45em] mx-auto bg-sky-200 dark:bg-emerald-800 rounded-full filter blur-2xl animation animate-pulse-slow"></div>
+        </div>
+
+        {/* Bottom canvas bubbles (hidden in light mode) */}
+        <div className="absolute md:hidden -top-0 ml-[-2em] w-72 h-72 bg-pink-500 dark:bg-pink-700 rounded-full filter blur-xl opacity-20"></div>
+        <div className="absolute -bottom-0 ml-[1em] w-72 h-72 bg-pink-300 dark:bg-pink-900 rounded-full  filter blur-xl opacity-75"></div>
+        <div className="absolute -bottom-0 ml-[4em] w-72 h-72 bg-pink-300 dark:bg-pink-400 rounded-full filter blur-3xl opacity-70"></div>
         {/* Logo and Buttons */}
         <div className="">
           <div className="relative text-gray-800 dark:text-gray-100 w-full mx-auto">
             <div className="mx-auto overflow-hidden pb-3">
               <div className="pt-6 max-w-lg px-4 md:px-0 md:max-w-2xl lg:max-w-6xl mx-auto">
-                <div className="flex">
+                <div className="flex flex-col md:flex-row">
                   
                   <div className="space-x-4 w-full flex text-3xl font-bold items-center">
                     {/* Put CashIcon and MarketGeek text into <a>*/}
@@ -98,21 +106,14 @@ function Home() {
                     <CashIcon className="w-10 h-10 mr-2.5" />
                     MarketGeek  
                     </a> 
-                    <SearchBox placeholder="Search for topic" /> 
+                    <SearchBox placeholder="Search for an article or stock" /> 
                   </div>
                   
 
-                  <div className="flex flex-shrink-0 justify-end">
-                    { user.role === 1 && 
-                      <div className="mr-6">
-                        <button type="button" className="hidden md:inline-flex items-center px-4 md:px-4 py-[0.4em] border text-base border-transparent font-medium rounded-lg text-white bg-gray-700/80 hover:bg-gray-700/70 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 transition ease-in">
-                          Internal Area
-                        </button>
-                      </div>
-                    }
-                    <button type="button" className="hidden md:inline-flex items-center px-4 md:px-4 py-[0.4em] border text-base border-transparent font-medium rounded-lg text-white bg-red-600/80 hover:bg-red-500/70 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition ease-in" onClick={signOut}>
+                  <div className="flex flex-shrink-0 lg:justify-end mt-2 lg:mt-0">
+                    <button type="button" className="inline-flex items-center px-4 md:px-4 py-[0.4em] border text-base border-transparent font-medium rounded-lg text-white bg-red-600/80 hover:bg-red-500/70 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition ease-in" onClick={signOut}>
                         Sign Out
-                      </button>
+                    </button>
                       <Link to="/search"> 
                      <button type="button" className="mx-2 inline-flex md:hidden items-center px-4 md:px-6 py-[0.4em] border text-base border-transparent font-medium rounded-lg text-white bg-sky-800/80 hover:bg-sky-800/70 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500 transition ease-in">
                         Search

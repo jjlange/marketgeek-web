@@ -213,7 +213,7 @@ const Search = () => {
             
                                     <div className="mt-2 ml-5">
                                         <p className=" font-semibold first-letter:uppercase">{result.title}</p>
-                                        <div>
+                                        <div className="leading-4 my-4 lg:my-0">
                                           <a href={result.url} target="_blank" rel="noreferrer" className="text-sm text-sky-600 underline">{result.url}</a>
                                         </div>
                                         <div className="text-sm font-light mt-2 max-w-2xl break-words first-letter:uppercase">
@@ -232,7 +232,7 @@ const Search = () => {
               </div>
 
               { searchSymbolPrice !== 0 &&
-                <div className="w-full lg:w-1/4 bg-sky-100 dark:bg-sky-700/90 border border-sky-300 dark:border-sky-900/90 rounded-md lg:ml-8 dark:text-slate-200 h-full pb-12 pt-6">
+                <div className="w-full lg:w-1/4 bg-sky-100 dark:bg-sky-700/90 border border-sky-300 dark:border-sky-900/90 rounded-md  dark:text-slate-200 h-full pb-12 pt-6">
                   <div className="p-2 rounded-md">
                       <div>
                         <h2 className="text-2xl font-medium mt-2 truncate items-center">

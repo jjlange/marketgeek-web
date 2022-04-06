@@ -1,6 +1,5 @@
 // Imports
 import SelectBox from '../Components/SelectBox'
-import { useState } from 'react'
 
 // Content view for the Sign Up modal
 const SignUpModalView = (props) => {

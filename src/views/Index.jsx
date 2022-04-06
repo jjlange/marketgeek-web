@@ -10,7 +10,7 @@
  **/
 
 // React imports
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import { useNavigate } from 'react-router-dom';
 import Modal from "./Components/Modal";
 
@@ -22,11 +22,8 @@ import axios from "axios";
 import { getUser, setUser, setToken } from "../Utils/User";
 
 // Import UI Components
-import Grid from "./Components/Grid"; // TODO: Add Grid component
 import LoginModalView from "./Modals/LoginModalView";
 import SignUpModalView from "./Modals/SignUpModalView";
-import SelectBox from "./Components/SelectBox";
-import { useEffect } from "react";
 
 
 // Index page 
@@ -61,7 +58,7 @@ function Index() {
       // Navigate to home
       navigate("/home")
     }     
-  }, []);
+  });
 
   // Functions to open and close the modal
   const openModal = () => {

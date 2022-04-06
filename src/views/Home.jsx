@@ -15,17 +15,16 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 // Import icons from Heroicons
-import { CashIcon, BellIcon, ViewGridIcon, NewspaperIcon, StarIcon, PlusIcon, CheckCircleIcon } from '@heroicons/react/outline'
+import { CashIcon,  ViewGridIcon, NewspaperIcon, StarIcon, PlusIcon, CheckCircleIcon } from '@heroicons/react/outline'
 
 // Import utilities
-import { getUser, removeToken, removeUser, setUser } from "../Utils/User";
+import { getUser, removeToken, removeUser} from "../Utils/User";
 
 import { fetchPopularStocks, fetchSentiments} from "../Hooks/financialFetch";
 // Import components
 import Widget from "./Components/Widget";
 
 // Import test json files
-import tradingStocks from "../Tests/tradingStocks.json";
 import searchResults from "../Tests/searchResults.json"
 import SearchBox from "./Components/SearchBox";
 
@@ -36,12 +35,11 @@ function Home() {
   const userSession = getUser();
 
   const [popularStocks, setPopularStocks] = useState([]);
-  const [stocks, setStocks] = useState([])
   const [positiveSentiment, setPositiveSentiment] = useState(0);
   const [negativeSentiment, setNegativeSentiment] = useState(0);
   const [neutralSentiment, setNeutralSentiment] = useState(0);
 
-  const [test, setTest] = useState(0)
+
 
 
   
@@ -245,7 +243,7 @@ function Home() {
                               { searchResults.map((stock, index) => ( 
                                 <div className="flex items-center">
                                   {(() => {
-                                    if(searchResults[index].sentiment_id == 0) {
+                                    if(searchResults[index].sentiment_id === 0) {
                                       return (
                                         <div className="h-10 flex items-center">
                                           <div className="">
@@ -274,7 +272,7 @@ function Home() {
             <Widget title="Top News"
                           view={
                             <div className="text-2xl mt-2 text-gray-800 dark:text-slate-100 break-words leading-normal font-normal  overflow-y-scroll h-[15em]">
-                              {popularStocks == 0 &&
+                              {popularStocks === 0 &&
                                 <p>No results found or API limit reached.</p>
                               } 
                               { popularStocks.map((stock, index) => (
@@ -283,7 +281,7 @@ function Home() {
                                     {index + 1}.
                                     </div>
                                     <div className="w-full ml-2">
-                                      <a href={stock.article_url} className="hover:underline" target="_blank"><p className="text-xl mt-1">{stock.title}</p></a>
+                                      <a href={stock.article_url} className="hover:underline" target="_blank" rel="noreferrer"><p className="text-xl mt-1">{stock.title}</p></a>
                                       <div className="flex space-x-2">
                                           { popularStocks[index].tickers.map((ticker, i) => {
                                             return (

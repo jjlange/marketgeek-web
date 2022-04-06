@@ -31,7 +31,7 @@ export default function SelectBox(props) {
         <Listbox value={selected} onChange={setSelected}>
           <div className="relative">
             <Listbox.Button className="appearance-none dark:text-white relative w-full py-[9px] pl-3 pr-10 text-left bg-white dark:bg-gray-700 rounded-lg cursor-default focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-75 shadow-sm focus-visible:ring-white focus-visible:ring-offset-orange-300 focus-visible:ring-offset-2 focus-visible:border-indigo-500 sm:text-sm border border-gray-300 dark:border-gray-600">
-              <span className="block truncate">{selected.name}</span>
+              <span className="block truncate dark:text-white">{selected.name}</span>
               <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
                 <SelectorIcon
                   className="w-5 h-5 text-black"
@@ -59,7 +59,7 @@ export default function SelectBox(props) {
                     {({ selected }) => (
                       <>
                         <span
-                          className={`block truncate ${
+                          className={`block truncate dark:text-white ${
                             selected ? 'font-medium' : 'font-normal'
                           }`}
                         >

@@ -12,7 +12,7 @@ const LoginModalView = (props) => {
                         name="email"
                         type="email"
                         autoComplete="email"
-                        className="block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm placeholder-gray-400 focus:outline-none focus:ring-sky-500 focus:border-sky-500 dark:bg-gray-700 sm:text-sm"
+                        className="block w-full px-3 py-2 border border-gray-300 dark:text-white dark:border-gray-600 rounded-lg shadow-sm placeholder-gray-400 focus:outline-none focus:ring-sky-500 focus:border-sky-500 dark:bg-gray-700 sm:text-sm"
                         value={props.email}
                         onChange={props.onChangeEmail}
                     />
@@ -30,7 +30,7 @@ const LoginModalView = (props) => {
                         name="password"
                         type="password"
                         autoComplete="password"
-                        className="appearance-none block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm placeholder-gray-400 focus:outline-none focus:ring-sky-500 focus:border-sky-500 dark:bg-gray-700 sm:text-sm"
+                        className="appearance-none block w-full px-3 py-2 border dark:text-white border-gray-300 dark:border-gray-600 rounded-lg shadow-sm placeholder-gray-400 focus:outline-none focus:ring-sky-500 focus:border-sky-500 dark:bg-gray-700 sm:text-sm"
                         value={props.password}
                         onChange={props.onChangePassword}
                     />

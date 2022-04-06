@@ -20,7 +20,11 @@ module.exports = {
       'sans': ['Ubuntu', 'sans-serif'],
       'nunito': ['Inter var', ...defaultTheme.fontFamily.sans],
     },
-    extend: {},
+    extend: {
+      animation: {
+        'pulse-slow': 'pulse 4s linear infinite',
+      }
+    },
   },
   plugins: [],
 }

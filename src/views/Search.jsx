@@ -92,9 +92,9 @@ const Search = (props,{ searchQuery, setSearchQuery }) => {
     fetchTicker(name).then((result) => { // Run the ticker and store value in result once loaded
       setSearchSymbol(result.ticker)
       setSearchCompany(result.name)
-      fetchPrice(result.ticker).then((result2) => { // Run the price with result as the argument and store price in result2
-        setSearchSymbolPrice(result2) // Set the price
-      })
+        fetchPrice(result.ticker).then((result2) => { // Run the price with result as the argument and store price in result2
+          setSearchSymbolPrice(result2) // Set the price
+        })
     }) 
   }, []);
 

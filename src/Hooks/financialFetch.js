@@ -5,8 +5,10 @@ export const fetchTicker = (query) => {
     return new Promise((resolve, reject) => {
         axios.get('https://api.polygon.io/v3/reference/tickers?active=true&search=' + query + '&sort=ticker&market=stocks&order=asc&limit=1&apiKey=loHZH3xI8iALabQ1tcSlFdSFL1OaOVqe')
         .then(result => {
-            var object = result.data.results[0]
-            resolve(object)
+            var object = result.data.results
+          
+
+            resolve(result[0])
         }).catch(err => {
             reject(err)
         })
@@ -16,6 +18,7 @@ export const fetchTicker = (query) => {
 // Method to get popular stocks from Polygon.io
 export const fetchPopularStocks = (limit) => {
     return new Promise((resolve, reject) => {
+        console.log('https://api.polygon.io/v2/reference/news?limit=' + limit + '&apiKey=loHZH3xI8iALabQ1tcSlFdSFL1OaOVqe')
         axios.get('https://api.polygon.io/v2/reference/news?limit=' + limit + '&apiKey=loHZH3xI8iALabQ1tcSlFdSFL1OaOVqe')
         .then(result => {
             var object = result.data.results;
@@ -29,9 +32,10 @@ export const fetchPopularStocks = (limit) => {
 // Method to fetch a price by a ticker from Polygon.io
 export const fetchPrice = (ticker) => {    
     // Get yesterday date
-    var date = getYesterdayDate();
+  //  var date = getYesterdayDate();
+  var date  = "2022-04-01";
     return new Promise((resolve, reject) => {
-        axios.get('https://api.polygon.io/v1/open-close/'+ ticker + '/' + date +'?adjusted=true&apiKey=loHZH3xI8iALabQ1tcSlFdSFL1OaOVqe')
+        axios.get('https://api.polygon.io/v1/open-close/'+ ticker + '/' + date +'?adjusted=true&apiKey=su2GHXggTKaoePfKqNUhylp7bS10S3Cy')
         .then(result => {
             resolve(result.data.close)
         }).catch(err => {
@@ -60,6 +64,11 @@ export const fetchSentiments = () => {
                    negative++
                }
             }
+
+            console.log("Positive", positive)
+            console.log("Neutral", neutral)
+            console.log("Negative", negative)
+
 
             var cost = positive + negative + neutral
 

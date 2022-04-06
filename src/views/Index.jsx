@@ -211,8 +211,7 @@ function Index() {
 
         {/* Top canvas bubble (hidden in dark mode) */}
         <div className="w-full absolute top-32">
-
-        <div className="w-[45em] h-[45em] mx-auto bg-sky-200 dark:bg-emerald-800 rounded-full filter blur-2xl animation animate-pulse-slow"></div>
+          <div className="w-[12em] h-[12em] md:w-[45em] md:h-[45em] mx-auto bg-sky-200 dark:bg-emerald-800 rounded-full filter blur-2xl animation animate-pulse-slow"></div>
         </div>
         
         {/* Bottom canvas bubbles (hidden in light mode) */}
@@ -324,15 +323,6 @@ function Index() {
                 </div>
               </div>
             </div>
-
-            {
-            /*    
-            TODO: Grid UI Component
-            
-            <Grid columns="2" gap="4">
-              ...
-            </Grid>
-            */}
 
             <div className="grid md:gap-4 w-full">
                 <div className="border border-gray-100 dark:border-gray-800 col-span-2 md:col-span-1 p-8 rounded-lg bg-white/90 dark:bg-gray-800/50 mt-16 md:shadow-2xl">

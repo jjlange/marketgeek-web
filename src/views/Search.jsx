@@ -1,8 +1,20 @@
-import React, { useState } from "react";
-import { useEffect } from "react";
-import { useNavigate, useSearchParams } from "react-router-dom";
-import { Link } from "react-router-dom";
-import searchResults from "../Tests/searchResults.json"
+/**
+ * MarketGeek Web App
+ * Copyright (C) 2022, MarketGeek.
+ *
+ * This is the web application for MarketGeek.
+ * It is a user interface to make the interaction between the user and the system.
+ * 
+ * @version 1.0
+ * @description Search page
+ **/
+
+// Import React packages
+import React, { useState, useEffect } from "react";
+import { useNavigate, useSearchParams, Link } from "react-router-dom";
+
+// Import components
+import SearchBox from "./Components/SearchBox";
 
 // Import icons from Heroicons
 import { CashIcon } from '@heroicons/react/outline'
@@ -10,14 +22,19 @@ import { CashIcon } from '@heroicons/react/outline'
 // Import utilities
 import { getUser, removeToken, removeUser } from "../Utils/User";
 
-// Import test json files
-import SearchBox from "./Components/SearchBox";
+// Import hooks
 import { fetchPrice, fetchTicker } from "../Hooks/financialFetch";
 
+// Import test json files
+import searchResults from "../Tests/searchResults.json"
+
+// Search Page Component
 const Search = () => {
+
      // Retrieve user session
     const userSession = getUser(); // user, null
 
+    // Initliase default values for users not signed in
     var user = {
       name: (""),
       email: (""),
@@ -26,8 +43,9 @@ const Search = () => {
       role: -1
     }
 
+
+    // Update user object if user session exists
     if(userSession) {
-      // User
       user = {  
         name: userSession.name,
         email: userSession.email,
@@ -38,6 +56,7 @@ const Search = () => {
     }
 
 
+    // Indicator (Green, Red, Yellow) for the search results
     function IndicatorCircle(result) {
       switch(result) {
         case 0:
@@ -73,37 +92,47 @@ const Search = () => {
           // Remove the user session
           removeToken(null);
           removeUser();
+
           // Redirect to the login page
           navigate('/');
     }
 
   
+  // Retrieve search params
   const [searchParams] = useSearchParams()
 
-  var name = searchParams.get("q") // /search => , /search?q=test => test
+  // Get query from URL
+  var name = searchParams.get("q")
 
-  if(name === null) {
-    name = ""
-  }
+  // Set name to an empty string if null
+  if(name === null) { name = "" }
 
-  const [searchSymbol, setSearchSymbol] = useState('');
-  const [searchSymbolPrice, setSearchSymbolPrice] = useState(0);
-  const [searchCompany, setSearchCompany] = useState(' ');
-  
+  // Define states for the result symbol, price and company
+  const [searchSymbol, setSearchSymbol] = useState('')
+  const [searchSymbolPrice, setSearchSymbolPrice] = useState(0)
+  const [searchCompany, setSearchCompany] = useState(' ')
 
-  useEffect(() => { // fetch ticker and price when component is loaded
-    fetchTicker(name).then((result) => { // Run the ticker and store value in result once loaded
-      setSearchSymbol(result.ticker)
-      setSearchCompany(result.name)
-        fetchPrice(result.ticker).then((result2) => { // Run the price with result as the argument and store price in result2
-          setSearchSymbolPrice(result2) // Set the price
-        })
+  // Fetch ticker and price when component is loaded
+  useEffect(() => { 
+    // Run the ticker and store value in result once loaded
+    fetchTicker(name).then((result) => {
+        // Update states
+        setSearchSymbol(result.ticker)
+        setSearchCompany(result.name)
+
+        // Run the price with result as the argument and store price in result2
+        fetchPrice(result.ticker).then((result2) => { 
+
+        // Set the price
+        setSearchSymbolPrice(result2)
+      })
     }) 
-  });
-
-
+  })
+  
+  // Convert results into an array to map through
   var data = Array.from(searchResults);
-  console.log(data)
+
+  // Return the JSX page
   return (
     <div className="bg-white dark:bg-slate-900 min-h-screen font-ubuntu overflow-visible">
         {/* Logo and Buttons */}
@@ -114,11 +143,11 @@ const Search = () => {
                 <div className="flex">
                   
                   <div className="space-x-4 w-full flex text-3xl font-bold items-center">
-                  <a href="/" className="inline-flex items-center">
-                    <CashIcon className="w-10 h-10 mr-2.5" />
-                    MarketGeek 
+                    <a href="/" className="inline-flex items-center">
+                      <CashIcon className="w-10 h-10 mr-2.5" />
+                      MarketGeek 
                     </a>  
-                    <SearchBox value={name} placeholder="Search for topic" /> 
+                      <SearchBox value={name} placeholder="Search for topic" /> 
                   </div>
 
                   <div className="flex flex-shrink-0 justify-end">
@@ -136,86 +165,88 @@ const Search = () => {
                       </button>
                       :
                       <div className="w-full justify-end flex items-center">
-                      <Link to='/' className="mx-2 inline-flex items-center px-4 md:px-6 py-[0.4em] border text-base border-transparent font-medium rounded-lg text-white bg-sky-800/80 hover:bg-sky-800/70 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500 transition ease-in">
-                        Go home
-                      </Link>
-                    </div>
-                      
+                        <Link to='/' className="mx-2 inline-flex items-center px-4 md:px-6 py-[0.4em] border text-base border-transparent font-medium rounded-lg text-white bg-sky-800/80 hover:bg-sky-800/70 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500 transition ease-in">
+                          Go home
+                        </Link>
+                      </div>
                     }
-                      <Link to="/search"> 
-                     <button type="button" className="mx-2 inline-flex md:hidden items-center px-4 md:px-6 py-[0.4em] border text-base border-transparent font-medium rounded-lg text-white bg-sky-800/80 hover:bg-sky-800/70 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500 transition ease-in">
+                    
+                    <Link to="/search"> 
+                      <button type="button" className="mx-2 inline-flex md:hidden items-center px-4 md:px-6 py-[0.4em] border text-base border-transparent font-medium rounded-lg text-white bg-sky-800/80 hover:bg-sky-800/70 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500 transition ease-in">
                         Search
                       </button>
-                      </Link>
+                    </Link>
                   </div>
                 </div>
               </div>
             </div>
+
           {/* Main Content */}
           <div className="mx-auto max-w-2xl px-4 md:max-w-4xl lg:max-w-screen-xl mt-8"> 
-          <div className="w-full text-3xl">
-          <h3 className="text-4xl font-bold">Search</h3>
-          <div className="max-w-xl rounded-md mt-4">
-          <SearchBox value={name} placeholder="Search for topic" /> 
-                 <div className="max-w-lg pt-0.5 pb-8">                                  
-                  <div className="flex flex-row space-x-4  text-gray-800 dark:text-gray-200 mt-4 mx-auto">
-                    <div className=" text-center">
-                        <button type="button" className="inline-flex items-center px-6 py-[0.4em] border text-base border-transparent font-medium rounded-lg text-white bg-sky-800/80 hover:bg-sky-800/70 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500 transition ease-in">
-                          All
-                        </button>
-                    </div>
-                    <div className="text-center">
-                        <button type="button" className="inline-flex items-center px-6 py-[0.4em] border text-base border-transparent font-medium rounded-lg text-white bg-sky-800/80 hover:bg-sky-800/70 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500 transition ease-in">
-                          News
-                        </button>
-                    </div>
-                    <div className="text-center">
-                        <button type="button" className="inline-flex items-center px-6 py-[0.4em] border text-base border-transparent font-medium rounded-lg text-white bg-sky-800/80 hover:bg-sky-800/70 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500 transition ease-in">
-                         Securities
-                        </button>
-                    </div>
-                  </div>
-                  <div className="space-x-4 pt-[2rem] text-2xl font-bold">
-                    {name === "" ? 
-                      <h2 className="text-xl inline-flex font-medium"><span className="font-light">No keyword entered</span></h2>
-                    :
-                      <h2 className="text-xl inline-flex font-medium">Results for: <span className="font-light ml-2.5">”{name}”</span></h2> 
-                    }
-                  </div>
-                </div>
-            </div>
-            <div className="flex flex-col-reverse md:flex-row space-y-reverse">
-              <div className="w-full">
-              { data.map((result, index) => (  
-                <div>
-                {(() => {
-                  if(searchResults[index].title.toLowerCase().includes(name.toLowerCase()) || searchResults[index].body.includes(name)) {
-                    return (
-                    <div className="flex flex-col mt-6"> 
-                      <div className="flex">           
-                          <div className="w-16">
-                              { IndicatorCircle(result.sentiment_id) }    
-                          </div>
-  
-                          <div className="mt-2 ml-5">
-                              <p className=" font-semibold first-letter:uppercase">{result.title}</p>
-                              <div>
-                                <a href={result.url} target="_blank" rel="noreferrer" className="text-sm text-sky-600 underline">{result.url}</a>
-                              </div>
-                              <div className="text-sm font-light mt-2 max-w-2xl break-words first-letter:uppercase">
-                                <p className="">{result.body.slice(2, 520)}</p>
-                              </div>
-                          </div>
-                      </div>  
-                    </div>    
-                    )
-                  }
-                  })()}
-                </div>    
-                ))}  
- 
-                <p className="text-center text-base mt-4 mb-4  font-semibold">No more news articles found, please try a different keyword.</p>
+            <div className="w-full text-3xl">
+              <h3 className="text-4xl font-bold">Search</h3>
+                <div className="max-w-xl rounded-md mt-4">
+                  <SearchBox value={name} placeholder="Search for topic" /> 
+                    <div className="max-w-lg pt-0.5 pb-8">                                  
+                      <div className="flex flex-row space-x-4  text-gray-800 dark:text-gray-200 mt-4 mx-auto">
+                        <div className=" text-center">
+                            <button type="button" className="inline-flex items-center px-6 py-[0.4em] border text-base border-transparent font-medium rounded-lg text-white bg-sky-800/80 hover:bg-sky-800/70 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500 transition ease-in">
+                              All
+                            </button>
+                        </div>
+                        <div className="text-center">
+                            <button type="button" className="inline-flex items-center px-6 py-[0.4em] border text-base border-transparent font-medium rounded-lg text-white bg-sky-800/80 hover:bg-sky-800/70 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500 transition ease-in">
+                              News
+                            </button>
+                        </div>
+                        <div className="text-center">
+                            <button type="button" className="inline-flex items-center px-6 py-[0.4em] border text-base border-transparent font-medium rounded-lg text-white bg-sky-800/80 hover:bg-sky-800/70 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500 transition ease-in">
+                            Securities
+                            </button>
+                        </div>
+                      </div>
 
+                      <div className="space-x-4 pt-[2rem] text-2xl font-bold">
+                        {name === "" ? 
+                          <h2 className="text-xl inline-flex font-medium"><span className="font-light">No keyword entered</span></h2>
+                        :
+                          <h2 className="text-xl inline-flex font-medium">Results for: <span className="font-light ml-2.5">”{name}”</span></h2> 
+                        }
+                      </div>
+                    </div>
+                  </div>
+           
+                  <div className="flex flex-col-reverse md:flex-row space-y-reverse">
+                    <div className="w-full">
+                      { data.map((result, index) => (  
+                      <div>
+                        {(() => {
+                          if(searchResults[index].title.toLowerCase().includes(name.toLowerCase()) || searchResults[index].body.includes(name)) {
+                            return (
+                              <div className="flex flex-col mt-6"> 
+                                <div className="flex">           
+                                    <div className="w-16">
+                                        { IndicatorCircle(result.sentiment_id) }    
+                                    </div>
+            
+                                    <div className="mt-2 ml-5">
+                                        <p className=" font-semibold first-letter:uppercase">{result.title}</p>
+                                        <div>
+                                          <a href={result.url} target="_blank" rel="noreferrer" className="text-sm text-sky-600 underline">{result.url}</a>
+                                        </div>
+                                        <div className="text-sm font-light mt-2 max-w-2xl break-words first-letter:uppercase">
+                                          <p className="">{result.body.slice(2, 520)}</p>
+                                        </div>
+                                    </div>
+                                </div>  
+                              </div>    
+                            )
+                          }
+                        })()}
+                      </div>    
+                  ))}   
+                  
+                  <p className="text-center text-base mt-4 mb-4  font-semibold">No more news articles found, please try a different keyword.</p>
               </div>
 
               { searchSymbolPrice !== 0 &&

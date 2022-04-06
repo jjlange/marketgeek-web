@@ -76,7 +76,7 @@ const Modal = props => {
                   // Exception for languages that read right to left, such as Arabic and Hebrew.
                 }
                 <div className={"pt-4 " + textAlign + " sm:mt-5"}>
-                  <Dialog.Title as="h2" className="text-4xl leading-6 font-medium dark:font-normal text-gray-800 dark:text-white">
+                  <Dialog.Title as="h2" className="text-4xl leading-12 font-medium dark:font-normal text-gray-800 dark:text-white">
                     {props.title}
                   </Dialog.Title>
 
@@ -95,25 +95,25 @@ const Modal = props => {
                 {isPrimaryDisabled ?
                     <button
                       type="button"
-                      className={"w-full inline-flex justify-center rounded-lg border border-transparent shadow-sm px-4 py-3 text-white bg-gray-400/80 focus:ring-gray-400/80 text-lg font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-0"}
+                      className={"w-full justify-center rounded-lg border border-transparent shadow-sm px-4 py-3 text-white bg-gray-400/80 focus:ring-gray-400/80 text-lg font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-0"}
                       onClick={props.onPrimary}
                       disabled
                     >
                       {props.primaryButton}
                     </button>
                   :   
-                  <button
+                    <button
                     type="button"
-                    className={"w-full inline-flex justify-center rounded-lg border shadow-sm px-4 py-3 text-sky-100 border-sky-800/80 bg-sky-700 hover:bg-sky-800/70 focus:ring-sky-800/80 text-lg font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-0"}
+                    className="w-2/3 mt-3 justify-center items-center rounded-lg border border-sky-400 dark:border-sky-700/80 px-4 py-2 bg-sky-600 hover:bg-sky-700/80 text-lg font-medium text-white dark:text-slate-100 sm:mt-0 sm:col-start-1"
                     onClick={props.onPrimary}
-                  >
-                    {props.primaryButton}
-                  </button>
+                    >
+                      {props.primaryButton}
+                    </button>
                 }
                 {props.secondaryButton &&
                 <button
                   type="button"
-                  className="w-2/3 mt-3 inline-flex justify-center items-center rounded-lg border border-gray-300 dark:border-gray-700 px-4 py-2 bg-white dark:bg-transparent text-lg font-medium text-gray-700 dark:text-slate-100 hover:bg-gray-50 dark:hover:bg-transparent focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-200 sm:mt-0 sm:col-start-1 dark:focus:ring-offset-0"
+                  className="w-2/3 mt-3 justify-center items-center rounded-lg border border-gray-300 dark:border-gray-700 px-4 py-2 bg-white dark:bg-transparent text-lg font-medium text-gray-700 dark:text-slate-100 hover:bg-gray-50 dark:hover:bg-transparent focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-200 sm:mt-0 sm:col-start-1 dark:focus:ring-offset-0"
                   onClick={props.onSecondary}
                 >
                   {props.secondaryButton}

@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import { SearchIcon } from '@heroicons/react/outline';
 import { Link } from "react-router-dom";
 import searchResults from "../Tests/searchResults.json"
 
 // Import icons from Heroicons
-import { CashIcon, BellIcon, ViewGridIcon, NewspaperIcon, StarIcon, PlusIcon } from '@heroicons/react/outline'
+import { CashIcon } from '@heroicons/react/outline'
 
 // Import utilities
 import { getUser, removeToken, removeUser } from "../Utils/User";
@@ -15,7 +14,7 @@ import { getUser, removeToken, removeUser } from "../Utils/User";
 import SearchBox from "./Components/SearchBox";
 import { fetchPrice, fetchTicker } from "../Hooks/financialFetch";
 
-const Search = (props,{ searchQuery, setSearchQuery }) => {
+const Search = () => {
      // Retrieve user session
     const userSession = getUser(); // user, null
 
@@ -79,9 +78,13 @@ const Search = (props,{ searchQuery, setSearchQuery }) => {
     }
 
   
-  const [searchParams, setSearchParams] = useSearchParams()
+  const [searchParams] = useSearchParams()
 
-  const name = searchParams.get("q")
+  var name = searchParams.get("q") // /search => , /search?q=test => test
+
+  if(name === null) {
+    name = ""
+  }
 
   const [searchSymbol, setSearchSymbol] = useState('');
   const [searchSymbolPrice, setSearchSymbolPrice] = useState(0);
@@ -96,7 +99,7 @@ const Search = (props,{ searchQuery, setSearchQuery }) => {
           setSearchSymbolPrice(result2) // Set the price
         })
     }) 
-  }, []);
+  });
 
 
   var data = Array.from(searchResults);
@@ -173,7 +176,11 @@ const Search = (props,{ searchQuery, setSearchQuery }) => {
                     </div>
                   </div>
                   <div className="space-x-4 pt-[2rem] text-2xl font-bold">
-                    <h2 className="text-xl inline-flex font-medium">Results for: <span className="font-light ml-2.5">”{name}”</span></h2>
+                    {name === "" ? 
+                      <h2 className="text-xl inline-flex font-medium"><span className="font-light">No keyword entered</span></h2>
+                    :
+                      <h2 className="text-xl inline-flex font-medium">Results for: <span className="font-light ml-2.5">”{name}”</span></h2> 
+                    }
                   </div>
                 </div>
             </div>
@@ -211,8 +218,8 @@ const Search = (props,{ searchQuery, setSearchQuery }) => {
 
               </div>
 
-              { searchSymbolPrice != 0 &&
-                <div className="w-1/4 bg-sky-100 dark:bg-sky-700/90 border border-sky-300 dark:border-sky-900/90 rounded-md ml-8 dark:text-slate-200 h-full pb-12 pt-6">
+              { searchSymbolPrice !== 0 &&
+                <div className="w-full lg:w-1/4 bg-sky-100 dark:bg-sky-700/90 border border-sky-300 dark:border-sky-900/90 rounded-md lg:ml-8 dark:text-slate-200 h-full pb-12 pt-6">
                   <div className="p-2 rounded-md">
                       <div>
                         <h2 className="text-2xl font-medium mt-2 truncate items-center">

@@ -10,15 +10,12 @@
  **/
 
 // Imports
-import { Fragment, useState } from 'react'
+import { Fragment} from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 
 // Modal component
 const Modal = props => {
   const ContentView = props.contentView;
-
-  // Set up colour scheme
-  let colorScheme = props.colorScheme ? props.colorScheme : "light"
 
   const isPrimaryDisabled = props.isPrimaryDisabled
 

@@ -1,11 +1,8 @@
-import { useNavigate } from 'react-router-dom';
 import { SearchIcon } from '@heroicons/react/outline';
-import { Link } from "react-router-dom";
 import { useState } from 'react';
 
 
-const SearchBox = (props,{ searchQuery, setSearchQuery }) => {
-    const navigate = useNavigate();
+const SearchBox = (props) => {
     const [searchField, setSearchField] = useState(props.value)
 
     return (

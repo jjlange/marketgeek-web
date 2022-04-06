@@ -6,9 +6,7 @@ export const fetchTicker = (query) => {
         axios.get('https://api.polygon.io/v3/reference/tickers?active=true&search=' + query + '&sort=ticker&market=stocks&order=asc&limit=1&apiKey=loHZH3xI8iALabQ1tcSlFdSFL1OaOVqe')
         .then(result => {
             var object = result.data.results
-          
-
-            resolve(result[0])
+            resolve(object[0])
         }).catch(err => {
             reject(err)
         })

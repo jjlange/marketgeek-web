@@ -32,10 +32,14 @@ import SelectBox from "./Components/SelectBox";
 function Index() {
     
   // Set the initial states of the page
-  const [emailValue, setEmailValue] = useState('test@test.com');
-  const [passwordValue, setPasswordValue] = useState('test');
+  const [emailValue, setEmailValue] = useState('');
+  const [passwordValue, setPasswordValue] = useState('');
+
+  const [firstNameValue, setFirstNameValue] = useState('');
+  const [surNameValue, setSurNameValue] = useState('');
 
   const [signInMessage, setSignInMessage] = useState('Enter your email address and password.');
+  const [signUpMessage, setSignUpMessage] = useState('We need a few details from you to create your account.');
 
   // Sign Up 
   const [signUpStep, setSignUpStep] = useState(1);
@@ -66,6 +70,7 @@ function Index() {
 
   const closeSignUpModal = () => {
     setSignUpModalVisibility(false)
+    setSignUpMessage('We need a few details from you to create your account.');
     setSignUpStep(1);
   }
 
@@ -81,13 +86,21 @@ function Index() {
     setPasswordValue(event.target.value);
   }
 
+  // Function to handle first name change (text field)
+  // This sets the first name variable to the value of the first name field
+  const handleFirstNameChange = (event) => {
+    setFirstNameValue(event.target.value);
+  }
+
+  // Function to handle sur name change (text field)
+  // This sets the sur name variable to the value of the sur name field
+  const handleSurNameChange = (event) => {
+    setSurNameValue(event.target.value);
+  }
+
   const handleSignIn = (event) => {
     // Prevent the default action of the form
     event.preventDefault();
-    console.log("Logging in..")
-    console.log("Message:", signInMessage)
-    console.log("Email", emailValue)
-    console.log("Password:", passwordValue)
 
     // Check if the email is empty
     if (emailValue === '') {
@@ -134,11 +147,50 @@ function Index() {
     }
   }
 
-  const people = [
-    { id: 1, name: 'System' },
-    { id: 2, name: 'Light' },
-    { id: 3, name: 'Dark' }
-  ]
+  const handleSignUp = (event) => {
+    // Prevent the default action of the form
+    event.preventDefault();
+
+    // Check if the email is empty
+    if (emailValue === '') {
+      // Set the email error message
+      setSignUpMessage('Please enter an email address.');
+    } else if(passwordValue === '') {
+      // Set the password error message
+      setSignUpMessage('Please enter a password.');
+    } else {
+      axios.post(process.env.REACT_APP_SERVER_URL +
+        '/user/create', {
+          email: emailValue,
+          password: passwordValue,
+          name: firstNameValue + ' ' + surNameValue,
+          api_key: process.env.REACT_APP_SERVER_API_KEY
+        })
+        .then(response => {
+          // Check if message is authenticated
+          if(response.data.accessToken) {
+              // Set session for the access token and user data
+              setToken(response.data.accessToken)
+              setUser(response.data.user)
+
+              // Redirect to the home page
+              navigate("/home");
+          } else {
+              if(response.data.message === 'EMAIL_IN_USE') {
+                  setSignUpMessage('That email is already taken.  Please try another.')
+              } else if(response.data.message === 'SUCCESS') {
+                  // Close Modal
+                  closeSignUpModal();
+
+                  // Open Sign In Modal
+                  openModal();
+              } else {
+                  setSignUpMessage('Something went wrong. Try it again later!')
+              }
+          }
+        })
+      }
+  }
 
   return (
       <div className={"bg-white dark:bg-slate-900 min-h-screen px-4 font-ubuntu overflow-visible relative"}>
@@ -149,7 +201,10 @@ function Index() {
         */}
 
         {/* Top canvas bubble (hidden in dark mode) */}
-        <div className="hidden md:absolute top-0 -left-12 w-72 h-72 bg-sky-200 dark:hidden rounded-full filter blur-xl"></div>
+        <div className="w-full absolute top-32">
+
+        <div className="w-[45em] h-[45em] mx-auto bg-sky-200 dark:bg-emerald-800 rounded-full filter blur-2xl animation animate-pulse-slow"></div>
+        </div>
         
         {/* Bottom canvas bubbles (hidden in light mode) */}
         <div className="absolute md:hidden -top-0 ml-[-2em] w-72 h-72 bg-pink-500 dark:bg-pink-700 rounded-full filter blur-xl opacity-20"></div>
@@ -221,8 +276,8 @@ function Index() {
           {signUpStep === 2 &&
           <Modal show={signUpModal} 
                   title="Your Details"
-                  description="We need a few details from you to create your account."
-                  primaryButton="Next Step"
+                  description={signUpMessage}
+                  primaryButton="Create"
                   secondaryButton="Go Back"
                   textAlign="center"
                   icon={<IdentificationIcon className="w-16 h-16" />}
@@ -230,10 +285,15 @@ function Index() {
                     <SignUpModalView 
                       emailValue={emailValue} 
                       onChangeEmail={handleEmailChange}
+                      passwordValue={passwordValue}
+                      onChangePassword={handlePasswordChange}
+                      firstNameValue={firstNameValue}
+                      onChangeFirstName={handleFirstNameChange}
+                      surNameValue={surNameValue}
+                      onChangeSurName={handleSurNameChange}
                     />
                   }
-                  onPrimary={() => setSignUpStep(2)}
-                  //isPrimaryDisabled={emailValue.length === 0 ? true : false}
+                  onPrimary={handleSignUp}
                   onSecondary={() => setSignUpStep(1)}
                   onClose={closeSignUpModal}
           ></Modal>

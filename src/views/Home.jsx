@@ -85,25 +85,6 @@ function Home() {
         navigate('/');
   }
 
-  // (int) positive, (int) negative, (int) neutral
-  // return (array) [positive: 20%, negative, 30%, neutral: 50%]
-  const calculateSentiment = (positive, negative, neutral) => {
-    var cost = positive + negative + neutral
-
-    positive = (positive/cost) * 100
-    negative = (negative/cost) * 100
-    neutral  = (neutral/cost) * 100
-
-    return [
-      {
-        "positive": positive,
-        "negative": negative,
-        "neutral": neutral
-      }
-    ]
-  }
-
-
   return (
     <div className="bg-white dark:bg-slate-900 min-h-screen font-ubuntu overflow-visible">
         {/* Logo and Buttons */}

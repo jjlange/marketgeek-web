@@ -140,42 +140,24 @@ const Search = () => {
           <div className="relative text-gray-800 dark:text-gray-100 w-full mx-auto">
             <div className="mx-auto overflow-hidden pb-3">
               <div className="pt-6 max-w-2xl px-2 md:max-w-4xl lg:max-w-screen-xl mx-auto">
-                <div className="flex">
+                <div className="flex flex-col md:flex-row">
                   
                   <div className="space-x-4 w-full flex text-3xl font-bold items-center">
                     <a href="/" className="inline-flex items-center">
                       <CashIcon className="w-10 h-10 mr-2.5" />
                       MarketGeek 
                     </a>  
-                      <SearchBox value={name} placeholder="Search for topic" /> 
+                      <SearchBox value={name} placeholder="Search for topic" hiddenMobile /> 
                   </div>
 
-                  <div className="flex flex-shrink-0 justify-end">
-                    { userSession && user.role === 1 && 
-                        <div className="mr-6">
-                          <button type="button" className="hidden lg:inline-flex items-center px-4 md:px-4 py-[0.4em] border text-base border-transparent font-medium rounded-lg text-white bg-gray-700/80 hover:bg-gray-700/70 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 transition ease-in">
-                            Internal Area
-                          </button>
-                        </div>
+                  <div className="flex flex-shrink-0 lg:justify-end mt-2 lg:mt-0">
+                    { userSession &&
+                         <div className="flex flex-shrink-0">
+                         <button type="button" className="inline-flex items-center px-4 md:px-4 py-[0.4em] border text-base border-transparent font-medium rounded-lg text-white bg-red-600/80 hover:bg-red-500/70 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition ease-in" onClick={signOut}>
+                             Sign Out
+                         </button>
+                         </div>
                     }
-
-                    { userSession ?
-                      <button type="button" className="inline-flex items-center px-4 md:px-4 py-[0.4em] border text-base border-transparent font-medium rounded-lg text-white bg-red-600/80 hover:bg-red-500/70 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition ease-in" onClick={signOut}>
-                        Sign Out
-                      </button>
-                      :
-                      <div className="w-full justify-end flex items-center">
-                        <Link to='/' className="mx-2 inline-flex items-center px-4 md:px-6 py-[0.4em] border text-base border-transparent font-medium rounded-lg text-white bg-sky-800/80 hover:bg-sky-800/70 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500 transition ease-in">
-                          Go home
-                        </Link>
-                      </div>
-                    }
-                    
-                    <Link to="/search"> 
-                      <button type="button" className="mx-2 inline-flex md:hidden items-center px-4 md:px-6 py-[0.4em] border text-base border-transparent font-medium rounded-lg text-white bg-sky-800/80 hover:bg-sky-800/70 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500 transition ease-in">
-                        Search
-                      </button>
-                    </Link>
                   </div>
                 </div>
               </div>
@@ -186,7 +168,7 @@ const Search = () => {
             <div className="w-full text-3xl">
               <h3 className="text-4xl font-bold">Search</h3>
                 <div className="max-w-xl rounded-md mt-4">
-                  <SearchBox value={name} placeholder="Search for topic" /> 
+                  <SearchBox value={name} placeholder="Search for topic" showButton /> 
                     <div className="max-w-lg pt-0.5 pb-8">                                  
                       <div className="flex flex-row space-x-4  text-gray-800 dark:text-gray-200 mt-4 mx-auto">
                         <div className=" text-center">

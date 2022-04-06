@@ -106,7 +106,7 @@ function Home() {
                     <CashIcon className="w-10 h-10 mr-2.5" />
                     MarketGeek  
                     </a> 
-                    <SearchBox placeholder="Search for an article or stock" /> 
+                    <SearchBox placeholder="Search for an article or stock" hiddenMobile /> 
                   </div>
                   
 

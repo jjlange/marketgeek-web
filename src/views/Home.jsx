@@ -272,7 +272,7 @@ function Home() {
             <Widget title="Top News"
                           view={
                             <div className="text-2xl mt-2 text-gray-800 dark:text-slate-100 break-words leading-normal font-normal  overflow-y-scroll h-[15em]">
-                              {popularStocks === 0 &&
+                              {popularStocks.length === 0 &&
                                 <p>No results found or API limit reached.</p>
                               } 
                               { popularStocks.map((stock, index) => (

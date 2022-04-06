@@ -95,10 +95,14 @@ function Home() {
                 <div className="flex">
                   
                   <div className="space-x-4 w-full flex text-3xl font-bold items-center">
+                    {/* Put CashIcon and MarketGeek text into <a>*/}
+                    <a href="/" className="inline-flex items-center">
                     <CashIcon className="w-10 h-10 mr-2.5" />
-                    MarketGeek   
+                    MarketGeek  
+                    </a> 
                     <SearchBox placeholder="Search for topic" /> 
                   </div>
+                  
 
                   <div className="flex flex-shrink-0 justify-end">
                     { user.role === 1 && 
@@ -270,6 +274,9 @@ function Home() {
             <Widget title="Top News"
                           view={
                             <div className="text-2xl mt-2 text-gray-800 dark:text-slate-100 break-words leading-normal font-normal  overflow-y-scroll h-[15em]">
+                              {popularStocks == 0 &&
+                                <p>No results found or API limit reached.</p>
+                              } 
                               { popularStocks.map((stock, index) => (
                                 <div className="flex items-center mt-8">
                                   <div className="w-10 h-10">

@@ -19,13 +19,14 @@ import { ArrowRightIcon, CashIcon, IdentificationIcon, UserCircleIcon } from '@h
 
 // Import Axios for HTTP requests
 import axios from "axios";
-import { setUser, setToken } from "../Utils/User";
+import { getUser, setUser, setToken } from "../Utils/User";
 
 // Import UI Components
 import Grid from "./Components/Grid"; // TODO: Add Grid component
 import LoginModalView from "./Modals/LoginModalView";
 import SignUpModalView from "./Modals/SignUpModalView";
 import SelectBox from "./Components/SelectBox";
+import { useEffect } from "react";
 
 
 // Index page 
@@ -50,6 +51,17 @@ function Index() {
   const [signUpModal, setSignUpModalVisibility] = useState(false);
 
   const navigate = useNavigate();
+  const userSession = getUser(); 
+
+  // Check if session exists
+
+  useEffect(() => {
+    if(userSession) {
+      console.log("You are logged in!")
+      // Navigate to home
+      navigate("/home")
+    }     
+  }, []);
 
   // Functions to open and close the modal
   const openModal = () => {

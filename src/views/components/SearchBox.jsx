@@ -16,7 +16,7 @@ const SearchBox = (props,{ searchQuery, setSearchQuery }) => {
             autoComplete="off"
             className="dark:border-gray-800"
         >
-            <div className="max-w-xl hidden md:flex items-center rounded-md pl-4 text-lg  border border-gray-100 dark:border-gray-800 bg-white/90 dark:bg-gray-800/50 py-[4px]">
+            <div className="max-w-xl hidden md:flex items-center rounded-md pl-4 text-lg  border border-gray-100 dark:border-gray-800 bg-white/90 dark:bg-gray-800 py-[4px]">
             <SearchIcon className="w-4 h-4 mr-2"/> 
             <input
                 type="text"
@@ -25,7 +25,7 @@ const SearchBox = (props,{ searchQuery, setSearchQuery }) => {
                 name="q"              
                 aria-hidden="true"
                 value={searchField}
-                className="focus:outline-none dark:bg-gray-800/50 bg-white/90"
+                className="focus:outline-none dark:bg-gray-800 bg-white/90"
                 onChange={(event) => setSearchField(event.target.value)}
             />               
              </div>                      

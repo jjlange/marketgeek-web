@@ -111,8 +111,10 @@ const Search = (props,{ searchQuery, setSearchQuery }) => {
                 <div className="flex">
                   
                   <div className="space-x-4 w-full flex text-3xl font-bold items-center">
+                  <a href="/" className="inline-flex items-center">
                     <CashIcon className="w-10 h-10 mr-2.5" />
-                    MarketGeek   
+                    MarketGeek 
+                    </a>  
                     <SearchBox value={name} placeholder="Search for topic" /> 
                   </div>
 
